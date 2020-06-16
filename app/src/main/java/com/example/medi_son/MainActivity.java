@@ -23,12 +23,13 @@ public class MainActivity extends AppCompatActivity {
         row1_1 = (ImageButton)findViewById(R.id.row1_1);
 
 
+
         row1_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stopPlaying();
-                //mp = MediaPlayer.create(MainActivity.this, R.raw.far);
-               // mp.start();
+                mp = MediaPlayer.create(MainActivity.this, R.raw.c_0);
+                mp.start();
             }
         });
 

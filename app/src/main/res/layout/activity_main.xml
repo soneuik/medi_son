@@ -25,30 +25,42 @@
                     android:id="@+id/row1_1"
                     android:layout_width="200px"
                     android:layout_height="200px"
-                    android:layout_marginLeft="50px" />
+                    android:layout_marginLeft="50px"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/rain1"
+                    android:background="@color/img_btn_background"
+                    />
 
                 <ImageButton
                     android:id="@+id/row1_2"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/rain2"
+                    android:background="@color/img_btn_background"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row1_3"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:background="@color/img_btn_background"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row1_4"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:background="@color/img_btn_background"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row1_5"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:background="@color/img_btn_background"
                     android:layout_marginLeft="50px" />
 
 
