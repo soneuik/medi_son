@@ -111,60 +111,93 @@
                 android:orientation="horizontal" >
 
                     <ImageButton
+                        android:id="@+id/c1_btn"
                         android:layout_marginTop="50px"
                         android:layout_width="400px"
                         android:layout_height="400px"
                         android:layout_marginLeft="33sp"
+                        android:src="@drawable/c1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
+
                         />
 
                     <ImageButton
+                        android:id="@+id/c2_btn"
                         android:layout_marginTop="50px"
                         android:layout_width="400px"
                         android:layout_height="400px"
                         android:layout_marginLeft="33sp"
+                        android:src="@drawable/c2"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
                         />
 
 
                     <ImageButton
+                        android:id="@+id/c3_btn"
                         android:layout_marginTop="50px"
                         android:layout_width="400px"
                         android:layout_height="400px"
                         android:layout_marginLeft="33sp"
+                        android:src="@drawable/c3"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
                         />
 
                     <ImageButton
+                        android:id="@+id/c4_btn"
                         android:layout_marginTop="50px"
                         android:layout_width="400px"
                         android:layout_height="400px"
                         android:layout_marginLeft="33sp"
+                        android:src="@drawable/c4"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
                         />
 
                     <ImageButton
+                        android:id="@+id/c5_btn"
                         android:layout_marginTop="50px"
                         android:layout_width="400px"
                         android:layout_height="400px"
                         android:layout_marginLeft="33sp"
+                        android:src="@drawable/c5"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
                         />
 
                     <ImageButton
+                        android:id="@+id/c6_btn"
                         android:layout_marginTop="50px"
                         android:layout_width="400px"
                         android:layout_height="400px"
                         android:layout_marginLeft="33sp"
+                        android:src="@drawable/c6"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
                         />
 
                     <ImageButton
+                        android:id="@+id/c7_btn"
                         android:layout_marginTop="50px"
                         android:layout_width="400px"
                         android:layout_height="400px"
                         android:layout_marginLeft="33sp"
+                        android:src="@drawable/c7"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
                         />
 
                     <ImageButton
+                        android:id="@+id/c8_btn"
                         android:layout_marginTop="50px"
                         android:layout_width="400px"
                         android:layout_height="400px"
                         android:layout_marginLeft="33sp"
+                        android:src="@drawable/c8"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
                         />
             </GridLayout>
         </ScrollView>
