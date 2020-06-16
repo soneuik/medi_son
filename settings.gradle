@@ -1,0 +1,2 @@
+rootProject.name='medi_son'
+include ':app'
