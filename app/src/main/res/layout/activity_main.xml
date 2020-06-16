@@ -4,22 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/b12"
+    >
 
 
+
+    <TextView
+        android:id="@+id/txt_nature"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:text="Nature"
+        android:textColor="@color/img_btn_background"
+        android:textSize="80px"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50px"
+        >
+    </TextView>
         <HorizontalScrollView
             android:id="@+id/top_h_scroll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_below ="@+id/txt_nature"
             >
+
+
 
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="5"
                 android:rowCount="2"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+
+                >
 
                 <ImageButton
                     android:id="@+id/row1_1"
@@ -28,8 +47,8 @@
                     android:layout_marginLeft="50px"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    android:src="@drawable/rain1"
-                    android:background="@color/img_btn_background"
+                    android:src="@drawable/r1"
+                    android:background="@drawable/b12"
                     />
 
                 <ImageButton
@@ -38,29 +57,32 @@
                     android:layout_height="200px"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    android:src="@drawable/rain2"
-                    android:background="@color/img_btn_background"
+                    android:src="@drawable/r2"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row1_3"
                     android:layout_width="200px"
                     android:layout_height="200px"
-                    android:background="@color/img_btn_background"
+                    android:src="@drawable/r3"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row1_4"
                     android:layout_width="200px"
                     android:layout_height="200px"
-                    android:background="@color/img_btn_background"
+                    android:src="@drawable/r4"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row1_5"
                     android:layout_width="200px"
                     android:layout_height="200px"
-                    android:background="@color/img_btn_background"
+                    android:src="@drawable/w1"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
 
 
@@ -68,38 +90,62 @@
                     android:id="@+id/row2_1"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:src="@drawable/w2"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row2_2"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:src="@drawable/w3"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row2_3"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:src="@drawable/w4"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row2_4"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:src="@drawable/w5"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
                     android:id="@+id/row2_5"
                     android:layout_width="200px"
                     android:layout_height="200px"
+                    android:src="@drawable/w2"
+                    android:background="@drawable/b12"
                     android:layout_marginLeft="50px" />
             </GridLayout>
         </HorizontalScrollView>
 
+
+    <TextView
+        android:id="@+id/txt_classic"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:text="Classic Sound"
+        android:textColor="@color/img_btn_background"
+        android:textSize="80px"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50px"
+        android:layout_below="@+id/top_h_scroll"
+        >
+    </TextView>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below ="@+id/top_h_scroll"
+            android:layout_below ="@+id/txt_classic"
             android:layout_marginTop="100px"
             >
 
@@ -108,7 +154,9 @@
                 android:layout_height="wrap_content"
                 android:columnCount="2"
                 android:rowCount="5"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:layout_marginTop="-60px"
+                >
 
                     <ImageButton
                         android:id="@+id/c1_btn"
@@ -119,7 +167,7 @@
                         android:src="@drawable/c1"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
-
+                        android:background="@drawable/b12"
                         />
 
                     <ImageButton
@@ -131,6 +179,7 @@
                         android:src="@drawable/c2"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
+                        android:background="@drawable/b12"
                         />
 
 
@@ -143,6 +192,7 @@
                         android:src="@drawable/c3"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
+                        android:background="@drawable/b12"
                         />
 
                     <ImageButton
@@ -154,6 +204,7 @@
                         android:src="@drawable/c4"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
+                        android:background="@drawable/b12"
                         />
 
                     <ImageButton
@@ -165,6 +216,7 @@
                         android:src="@drawable/c5"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
+                        android:background="@drawable/b12"
                         />
 
                     <ImageButton
@@ -176,6 +228,7 @@
                         android:src="@drawable/c6"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
+                        android:background="@drawable/b12"
                         />
 
                     <ImageButton
@@ -187,6 +240,7 @@
                         android:src="@drawable/c7"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
+                        android:background="@drawable/b12"
                         />
 
                     <ImageButton
@@ -198,6 +252,7 @@
                         android:src="@drawable/c8"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
+                        android:background="@drawable/b12"
                         />
             </GridLayout>
         </ScrollView>
