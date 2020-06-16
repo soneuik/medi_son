@@ -92,6 +92,7 @@
                     android:layout_height="200px"
                     android:src="@drawable/w2"
                     android:background="@drawable/b12"
+                    android:layout_marginTop="25px"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
@@ -100,6 +101,7 @@
                     android:layout_height="200px"
                     android:src="@drawable/w3"
                     android:background="@drawable/b12"
+                    android:layout_marginTop="25px"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
@@ -108,6 +110,7 @@
                     android:layout_height="200px"
                     android:src="@drawable/w4"
                     android:background="@drawable/b12"
+                    android:layout_marginTop="25px"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
@@ -116,6 +119,7 @@
                     android:layout_height="200px"
                     android:src="@drawable/w5"
                     android:background="@drawable/b12"
+                    android:layout_marginTop="25px"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
@@ -124,6 +128,7 @@
                     android:layout_height="200px"
                     android:src="@drawable/w2"
                     android:background="@drawable/b12"
+                    android:layout_marginTop="25px"
                     android:layout_marginLeft="50px" />
             </GridLayout>
         </HorizontalScrollView>
