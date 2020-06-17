@@ -7,6 +7,7 @@
     tools:context=".MusicPlayerActivity">
 
     <TextView
+        android:id="@+id/timer_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Player"
@@ -23,6 +24,9 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             ></ImageView>
+
+
+
 
     </LinearLayout>
 

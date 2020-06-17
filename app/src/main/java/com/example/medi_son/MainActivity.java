@@ -2,7 +2,9 @@ package com.example.medi_son;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,6 +19,15 @@ public class MainActivity extends AppCompatActivity {
     //Classic Img_btn
     ImageButton c1_btn, c2_btn,c3_btn,c4_btn,c5_btn,c6_btn,c7_btn,c8_btn;
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        stopPlaying();
+
+
+    }
 
 
     @Override
