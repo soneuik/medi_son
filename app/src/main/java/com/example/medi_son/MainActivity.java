@@ -1,9 +1,7 @@
 package com.example.medi_son;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -25,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
 
 
@@ -56,32 +51,63 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
         row1_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] colors = {"red", "green", "blue", "black"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Pick a color");
-                builder.setItems(colors, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // the user clicked on colors[which]
-                    }
-                });
-                builder.show();
-
-
-
-
-                Player_modal pmm =new Player_modal(MainActivity.this);
+                String song = "amazon_bird";
+                PlayerModalActivity pmm =new PlayerModalActivity(MainActivity.this, song);
                 pmm.show();
 
             }
         });
+
+
+        row2_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                mp = MediaPlayer.create(MainActivity.this, R.raw.amazon_animal);
+                mp.start();
+            }
+        });
+
+        row2_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                mp = MediaPlayer.create(MainActivity.this, R.raw.amazon_bird);
+                mp.start();
+            }
+        });
+
+        row2_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                mp = MediaPlayer.create(MainActivity.this, R.raw.forest_bird);
+                mp.start();
+            }
+        });
+
+        row2_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                mp = MediaPlayer.create(MainActivity.this, R.raw.frog);
+                mp.start();
+            }
+        });
+
+        row2_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopPlaying();
+                mp = MediaPlayer.create(MainActivity.this, R.raw.sealion);
+                mp.start();
+            }
+        });
+
+
 
 
         //classic sound buttons

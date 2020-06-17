@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="80dp"
+    android:layout_height="400dp"
     android:background="#3E80B4"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    >
 
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@color/img_btn_background"
+        android:src="@drawable/watch"
+        android:layout_marginTop="30dp"
+        >
+
+    </ImageView>
     <TextView
         android:id="@+id/txt_dia"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:text="Do you realy want to exit ?"
+        android:layout_margin="20dp"
+        android:textAlignment="center"
+        android:text="Choose your timer"
         android:textColor="@android:color/white"
-        android:textSize="15dp"
+        android:textSize="30dp"
         android:textStyle="bold"/>
 
 
@@ -22,28 +36,57 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#3E80B4"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/btn_yes"
+            android:id="@+id/min5"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:background="@android:color/white"
             android:clickable="true"
-            android:text="Yes"
+            android:layout_marginLeft="20dp"
+            android:text="5min"
             android:textColor="#5DBCD2"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btn_no"
+            android:id="@+id/min10"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="20dp"
             android:background="@android:color/white"
             android:clickable="true"
-            android:text="No"
+            android:text="10min"
             android:textColor="#5DBCD2"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/min20"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/white"
+            android:clickable="true"
+            android:text="20min"
+            android:textColor="#5DBCD2"
+            android:layout_marginRight="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/start_btn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:text="Start"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:textColor="#5DBCD2"
+        android:textStyle="bold" />
+
+
 
 </LinearLayout>
