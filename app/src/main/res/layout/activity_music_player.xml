@@ -4,31 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MusicPlayerActivity">
+    tools:context=".MusicPlayerActivity"
+    android:background="@drawable/b12"
+    >
 
-    <TextView
-        android:id="@+id/timer_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Player"
-        android:textSize="100dp"
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         >
 
-    </TextView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+
+        <TextView
+            android:id="@+id/timer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text=""
+            android:textSize="50dp"
+            >
+        </TextView>
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            ></ImageView>
+            android:id="@+id/gif_img"
+            android:layout_width="300px"
+            android:layout_height="300px"
+            android:layout_marginBottom="100dp"
+            android:layout_below="@+id/timer_text"
+            >
+
+        </ImageView>
 
 
 
+        <ImageButton
+            android:id="@+id/play_btn"
+            android:src="@drawable/play"
+            android:layout_marginTop="80dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_below="@+id/gif_img"
+            android:layout_width="300px"
+            android:layout_height="300px"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            >
 
-    </LinearLayout>
+        </ImageButton>
+    </RelativeLayout>
 
 
 </RelativeLayout>

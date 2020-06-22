@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -20,6 +22,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private MediaPlayer mp = new MediaPlayer();
     private TextView tv;
     private  Timer timer;
+    CountDownTimer CountDownTimer;
+    private ImageButton play_btn ;
+
+
 
 
     @Override
@@ -44,100 +50,96 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-        tv = findViewById(R.id.timer_text);
-
-        Intent intent = getIntent();
-
-        if (intent != null){
-            String timer_selected = intent.getStringExtra("timer_selected");
-            String name_music = intent.getStringExtra("name_music");
-        }
-
-
-        //Uri myUri = Uri.parse("R.raw.amazozn_animal");
-
-
-
-        CountDownTimer cntr_aCounter = new CountDownTimer(3000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                mp = MediaPlayer.create(MusicPlayerActivity.this, R.raw.forest_bird);
-                mp.start();
-            }
-
-            public void onFinish() {
-                //code fire after finish
-                mp.stop();
-            }
-        };
-
-
-        if (mp.isPlaying()) {
-            tv.setText("Playing : music.mp3....");
-            mp.pause();
-        } else {
-            tv.setText("pause : music.mp3....");
-            mp.start();
-            tv.post(mUpdateTime);
-        }
-
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
 
 
-        Intent intent = getIntent();
+
+        play_btn = findViewById(R.id.play_btn);
+        play_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp.stop();
+
+                tv = findViewById(R.id.timer_text);
 
 
-        if (intent != null){
-            String timer_selected = intent.getStringExtra("timer_selected");
-            String name_music = intent.getStringExtra("name_music");
-        }
+                Intent intent = getIntent();
+                String timer_selected= "";
+                String name_music ="";
+
+                if (intent != null){
+                    timer_selected = intent.getStringExtra("timer_selected");
+                    name_music = intent.getStringExtra("name_music");
+                }
+
+                int time = 0;
+
+                switch(timer_selected) {
+                    case "5min":
+                        time= 300;
+                        break;
+                    case "10min":
+                        time= 600;
+                        break;
+                    case "20min":
+                        time= 1200;
+                        break;
+                    default:
+                        time= 300;
+                        break;
+                }
 
 
 
-        Uri myUri = Uri.parse("R.raw.amazozn_animal");
-        playSoundForXSeconds(myUri, 100);
+                if(mp != null) {
+                    playMp3(name_music);
+                }else{
+                    System.out.println("mp object null error");
+                }
+
+
+
+                if(CountDownTimer!=null){
+                    CountDownTimer.cancel();
+                }
+
+                reverseTimer(time, tv);
+
+
+            }
+        });
+
+    }
+
+    private void playMp3(String nameOfFile){
+          mp = MediaPlayer.create(this, getResources().getIdentifier(nameOfFile, "raw", getPackageName()));
+          mp.start();
     }
 
 
+    public void reverseTimer(int Seconds,final TextView tv){
 
-    private void playSoundForXSeconds(final Uri soundUri, int seconds) {
-        if(soundUri!=null) {
-            final MediaPlayer mp = new MediaPlayer();
-            try {
-                mp.setDataSource(MusicPlayerActivity.this, soundUri);
-                mp.prepare();
-                mp.start();
-            }catch(Exception e) {
-                e.printStackTrace();
+        CountDownTimer = new CountDownTimer(Seconds* 1000+1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                tv.setText("TIME : " + String.format("%02d", minutes)
+                        + ":" + String.format("%02d", seconds));
             }
 
-            Handler mHandler = new Handler();
-            mHandler.postDelayed(new Runnable() {
-                public void run() {
-                    try {
-                        mp.stop();
-                    }catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }, seconds * 1000);
-        }
+            public void onFinish() {
+                tv.setText("Completed");
+            }
+        }.start();
     }
 
 
-    private void playerSound() {
-        stopPlaying();
-        mp = MediaPlayer.create(MusicPlayerActivity.this, R.raw.forest_bird);
-        //mp.start();
-    }
+    //////////////////////////////NOT USED but useful///////////////////////////////////////////////////////////
+
 
 
 
@@ -149,9 +151,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
             mp = null;
         }
     }
-
-
-
 
 
 

@@ -17,14 +17,11 @@ public class PlayerModalActivity extends Dialog implements
 
 
 
-
-
-
         public PlayerModalActivity(Activity a, String song) {
                 super(a);
                 // TODO Auto-generated constructor stub
                 this.current_activity = a;
-            name_music= song;
+                name_music= song;
         }
 
 
