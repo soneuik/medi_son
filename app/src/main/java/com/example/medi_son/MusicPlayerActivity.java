@@ -26,8 +26,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private ImageButton play_btn ;
 
 
-
-
     @Override
     public void onBackPressed ()
     {
@@ -48,13 +46,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
-
-
 
         play_btn = findViewById(R.id.play_btn);
         play_btn.setOnClickListener(new View.OnClickListener() {
@@ -91,22 +86,18 @@ public class MusicPlayerActivity extends AppCompatActivity {
                         break;
                 }
 
-
-
                 if(mp != null) {
                     playMp3(name_music);
                 }else{
                     System.out.println("mp object null error");
                 }
 
-
-
                 if(CountDownTimer!=null){
                     CountDownTimer.cancel();
                 }
 
+                //A function to set up the timer
                 reverseTimer(time, tv);
-
 
             }
         });
@@ -139,8 +130,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
 
     //////////////////////////////NOT USED but useful///////////////////////////////////////////////////////////
-
-
 
 
     private void stopPlaying() {

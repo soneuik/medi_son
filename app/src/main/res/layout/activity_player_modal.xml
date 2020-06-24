@@ -12,7 +12,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:background="@color/img_btn_background"
+        android:background="@drawable/button_background"
         android:src="@drawable/watch"
         android:layout_marginTop="30dp"
         >
@@ -42,20 +42,21 @@
         <Button
             android:id="@+id/min5"
             android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:background="@android:color/white"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
             android:clickable="true"
             android:layout_marginLeft="20dp"
             android:text="5min"
             android:textColor="#5DBCD2"
+            android:radius="10dp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/min10"
             android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
-            android:background="@android:color/white"
+            android:background="@drawable/button_background"
             android:clickable="true"
             android:text="10min"
             android:textColor="#5DBCD2"
@@ -64,9 +65,9 @@
         <Button
             android:id="@+id/min20"
             android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
-            android:background="@android:color/white"
+            android:background="@drawable/button_background"
             android:clickable="true"
             android:text="20min"
             android:textColor="#5DBCD2"
@@ -74,18 +75,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/start_btn"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:clickable="true"
-        android:text="Start"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:textColor="#5DBCD2"
-        android:textStyle="bold" />
 
 
 
