@@ -48,7 +48,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
                     android:src="@drawable/r1"
-                    android:background="@drawable/b12"
+                    android:background="@drawable/main_button"
                     />
 
                 <ImageButton
@@ -58,7 +58,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
                     android:src="@drawable/r2"
-                    android:background="@drawable/b12"
+                    android:background="@drawable/main_button"
                     android:layout_marginLeft="50px" />
 
                 <ImageButton
@@ -172,7 +172,7 @@
                         android:src="@drawable/c1"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
-                        android:background="@drawable/b12"
+                        android:background="@drawable/main_button"
                         />
 
                     <ImageButton
@@ -184,7 +184,7 @@
                         android:src="@drawable/c2"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
-                        android:background="@drawable/b12"
+                        android:background="@drawable/main_button"
                         />
 
 
@@ -197,7 +197,7 @@
                         android:src="@drawable/c3"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside"
-                        android:background="@drawable/b12"
+                        android:background="@drawable/main_button"
                         />
 
                     <ImageButton

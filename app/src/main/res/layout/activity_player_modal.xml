@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="400dp"
-    android:background="#3E80B4"
+    android:background="@drawable/s1"
     android:orientation="vertical"
     android:layout_gravity="center"
     >
@@ -12,7 +12,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:background="@drawable/button_background"
         android:src="@drawable/watch"
         android:layout_marginTop="30dp"
         >
@@ -25,7 +24,7 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:textAlignment="center"
-        android:text="Choose your timer"
+        android:text="Choose Your Timer"
         android:textColor="@android:color/white"
         android:textSize="30dp"
         android:textStyle="bold"/>
@@ -35,7 +34,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#3E80B4"
         android:layout_marginTop="30dp"
         android:orientation="horizontal" >
 
