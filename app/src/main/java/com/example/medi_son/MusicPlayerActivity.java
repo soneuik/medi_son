@@ -12,6 +12,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -104,10 +109,36 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     }
 
-    private void playMp3(String nameOfFile){
-          mp = MediaPlayer.create(this, getResources().getIdentifier(nameOfFile, "raw", getPackageName()));
-          mp.start();
+
+
+    private void playMp3 (String nameOfFile){
+        // Points to the root reference
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        StorageReference dateRef = storageRef.child("/" + nameOfFile+ ".mp3");
+        dateRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>()
+        {
+            @Override
+            public void onSuccess(Uri downloadUrl)
+            {
+                try{
+                    System.out.println("downloadUrl: "+downloadUrl);
+                    mp.setDataSource(downloadUrl.toString());
+
+                    mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener(){
+                        @Override
+                        public void onPrepared(MediaPlayer mp){
+                            mp.start();
+                        }
+                    });
+
+                    mp.prepare();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
     }
+
 
 
     public void reverseTimer(int Seconds,final TextView tv){

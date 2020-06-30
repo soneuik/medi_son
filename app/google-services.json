@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "883637240983-oe02m8ct3jrvds7ntlj5a7qjdvo8jhgo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medi_son",
+            "certificate_hash": "5d38b2bf21b112aaa73e2f23feab45366826d8a8"
+          }
+        },
+        {
           "client_id": "883637240983-43e3nfe30nn0gs5jpi6ato745fvpn7tt.apps.googleusercontent.com",
           "client_type": 3
         }
