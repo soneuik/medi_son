@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "883637240983",
+    "firebase_url": "https://medison-85678.firebaseio.com",
+    "project_id": "medison-85678",
+    "storage_bucket": "medison-85678.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883637240983:android:df756c1c35815a7c0315d2",
+        "android_client_info": {
+          "package_name": "com.example.medi_son"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883637240983-43e3nfe30nn0gs5jpi6ato745fvpn7tt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNsvhIdrCxDZo5jkvBvcleaNrPW41k0-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "883637240983-43e3nfe30nn0gs5jpi6ato745fvpn7tt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
