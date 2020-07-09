@@ -15,7 +15,10 @@ public class PlayerModalActivity extends Dialog implements
         public Button min5, min10, min20;
         private String name_music ="";
 
+    public PlayerModalActivity(Activity a){
+        super(a);
 
+    }
 
         public PlayerModalActivity(Activity a, String song) {
                 super(a);

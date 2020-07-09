@@ -27,15 +27,15 @@
             android:textSize="50dp"
             >
         </TextView>
-        <ImageView
+        <WebView
             android:id="@+id/gif_img"
             android:layout_width="300px"
             android:layout_height="300px"
             android:layout_marginBottom="100dp"
             android:layout_below="@+id/timer_text"
+            android:layout_gravity="center"
             >
-
-        </ImageView>
+        </WebView>
 
 
 
