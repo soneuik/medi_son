@@ -30,14 +30,12 @@
             >
 
 
-
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="5"
                 android:rowCount="2"
                 android:orientation="horizontal"
-
                 >
 
                 <ImageButton
@@ -261,5 +259,15 @@
                         />
             </GridLayout>
         </ScrollView>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu" />
+
 
 </RelativeLayout>
