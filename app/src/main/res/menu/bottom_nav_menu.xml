@@ -4,16 +4,22 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        android:iconTint="@drawable/bottom_navigation_selector"
+        />
 
     <item
         android:id="@+id/nav_sleep"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Sleep" />
+        android:title="Sleep"
+        android:iconTint="@drawable/bottom_navigation_selector"
+        />
 
     <item
         android:id="@+id/nav_Sound"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="Sound" />
+        android:title="Sound"
+        android:iconTint="@drawable/bottom_navigation_selector"
+        />
 
 </menu>

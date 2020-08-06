@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Classic Img_btn
     ImageButton c1_btn, c2_btn, c3_btn, c4_btn, c5_btn, c6_btn, c7_btn, c8_btn;
 
-    BottomNavigationView navView;
+
 
     @Override
     protected void onStart() {
@@ -80,9 +80,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         c8_btn.setOnClickListener(this);
 
 
-        navView = findViewById(R.id.nav_view);
-        //make nav menu able to execute
-        navView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+
+        bottomNavigationView.setSelectedItemId(R.id.nav_Sound);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_sleep:
+                        startActivity(new Intent(getApplicationContext(), SleepActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_Sound:
+                        return true;
+
+                }
+                return false;
+            }
+        });
+
 
     }
 
@@ -215,22 +239,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.nav_home:
-                    Intent mainIntent = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(mainIntent);
-                    break;
+                    startActivity(new Intent(getApplicationContext(), SleepActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
 
                 case R.id.nav_sleep:
-                    Intent classIntent = new Intent(MainActivity.this, SleepActivity.class);
-                    startActivity(classIntent);
-                    break;
+                    startActivity(new Intent(getApplicationContext(), SleepActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
 
                 case R.id.nav_Sound:
-                    Intent finalIntent = new Intent(MainActivity.this, MainActivity.class);
-                    startActivity(finalIntent);
-                    break;
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
 
             }
-            return true;
+            return false;
         }
 
     };

@@ -148,6 +148,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/scroll_view"
             android:layout_below ="@+id/txt_classic"
             android:layout_marginTop="100px"
             >
@@ -260,7 +261,6 @@
             </GridLayout>
         </ScrollView>
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
@@ -268,6 +268,8 @@
         android:background="?android:attr/windowBackground"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu" />
+
+
 
 
 </RelativeLayout>
