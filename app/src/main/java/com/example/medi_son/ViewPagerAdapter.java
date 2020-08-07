@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -41,6 +42,20 @@ public class ViewPagerAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.custom_layout, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
+
+
+         view.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v){
+                 if(position==0){
+                     Toast.makeText(context,"slide 1 clicked", Toast.LENGTH_SHORT).show();
+                 }else if(position==1){
+                     Toast.makeText(context,"slide 2 clicked", Toast.LENGTH_SHORT).show();
+                 }else if(position==2){
+                     Toast.makeText(context,"slide 3 clicked", Toast.LENGTH_SHORT).show();
+                 }
+             }
+         });
 
 
         ViewPager vp = (ViewPager) container;

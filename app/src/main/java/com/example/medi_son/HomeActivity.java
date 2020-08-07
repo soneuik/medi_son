@@ -20,14 +20,11 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView[] dots;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
 
@@ -49,7 +46,6 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-
                 }
                 return false;
             }
@@ -58,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     ///////////////////////displaying dots indicator-START /////////////////////////////////////////////////////////////////////////////////////////////
-
+    //https://www.sanktips.com/2017/10/01/how-to-add-dots-indicator-to-image-slider-with-viewpager-in-android-studio/
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
