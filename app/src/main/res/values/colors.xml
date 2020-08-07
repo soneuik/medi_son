@@ -6,5 +6,7 @@
     <color name="img_btn_background">#FFFFFFFF</color>
     <color name="transparent">#80000000</color>
     <color name="black">#000000</color>
+    <color name="bottom">#3D6EA3</color>
+
 
 </resources>
