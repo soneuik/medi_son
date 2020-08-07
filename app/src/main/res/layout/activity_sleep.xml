@@ -22,7 +22,7 @@
                 android:id="@+id/txt_sleep"
                 android:layout_width="match_parent"
                 android:layout_height="150px"
-                android:text="수면"
+                android:text="SLEEP"
                 android:textColor="@color/img_btn_background"
                 android:textSize="100px"
                 android:layout_marginTop="50px"
@@ -41,38 +41,106 @@
                 android:layout_marginBottom="50px"
                 android:rowCount="1">
 
-                <ImageButton
-                    android:id="@+id/c1_btn"
-                    android:layout_width="400px"
-                    android:layout_height="450px"
-                    android:layout_marginLeft="33sp"
-                    android:layout_marginTop="50px"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/main_button"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/c1" />
+                <LinearLayout
+                    android:id="@+id/linLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
-                <ImageButton
-                    android:id="@+id/c2_btn"
-                    android:layout_width="400px"
-                    android:layout_height="450px"
-                    android:layout_marginLeft="33sp"
-                    android:layout_marginTop="50px"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/main_button"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/c2" />
+
+                    <ImageButton
+                        android:id="@+id/c1_btn"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="33sp"
+                        android:layout_marginTop="50px"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/w4" />
+
+
+                    <TextView
+                        android:id="@+id/c1_text2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:text="Sleep well"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c1_text"
+                        android:layout_width="200dp"
+                        android:layout_below ="@+id/c1_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="      Sleep starts from brain"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+
+                    <ImageButton
+                        android:id="@+id/c2_btn"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="50px"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/w2" />
+
+
+                    <TextView
+                        android:id="@+id/c2_text2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="  Deep sleep"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c2_text"
+                        android:layout_width="130dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_below ="@+id/c2_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="GOOD NIGHT"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+
             </GridLayout>
 
 
             <TextView
                 android:id="@+id/txt_sleep_rec"
                 android:layout_width="match_parent"
-                android:layout_height="150px"
-                android:text="추천곡"
+                android:layout_height="100px"
+                android:text="RECOMMANDATION"
                 android:textColor="@color/img_btn_background"
-                android:textSize="100px"
-                android:layout_marginTop="50px"
+                android:textSize="60px"
                 android:layout_marginBottom="50px"
                 android:layout_marginLeft="50px"
                 >
@@ -91,16 +159,18 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="50px"
-                    android:src="@drawable/c1" />
+                    android:src="@drawable/w7" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
-                    android:textSize="30dp"
+                    android:textSize="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="100px"
-                    android:text="잠 잘오게 하기" />
+                    android:textColor="@color/img_btn_background"
+                    android:text="Relaxation            sleep well" />
+
 
                 <ImageView
                     android:id="@+id/play_btn"
@@ -110,6 +180,16 @@
                     android:layout_marginLeft="80px"
                     android:src="@drawable/play" />
             </LinearLayout>
+            <TextView
+                android:id="@+id/line"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/connect_help"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bottom" />
             <LinearLayout
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
@@ -123,16 +203,17 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="50px"
-                    android:src="@drawable/c1" />
+                    android:src="@drawable/w9" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
-                    android:textSize="30dp"
+                    android:textSize="20dp"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/img_btn_background"
                     android:layout_marginLeft="100px"
-                    android:text="잠 잘오게 하기" />
+                    android:text="Sleep Well                  right now" />
 
                 <ImageView
                     android:id="@+id/play_btn2"
@@ -142,6 +223,16 @@
                     android:layout_marginLeft="80px"
                     android:src="@drawable/play" />
             </LinearLayout>
+            <TextView
+                android:id="@+id/line2"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/connect_help"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bottom" />
             <LinearLayout
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
@@ -155,16 +246,17 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="50px"
-                    android:src="@drawable/c1" />
+                    android:src="@drawable/w5" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
-                    android:textSize="30dp"
+                    android:textSize="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="100px"
-                    android:text="잠 잘오게 하기" />
+                    android:textColor="@color/img_btn_background"
+                    android:text="Having a good dream   deep sleep" />
 
                 <ImageView
                     android:id="@+id/play_btn3"
@@ -174,22 +266,37 @@
                     android:layout_marginLeft="80px"
                     android:src="@drawable/play" />
             </LinearLayout>
-
-            <GridLayout
+            <TextView
+                android:id="@+id/line3"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/connect_help"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="1"
-                android:orientation="horizontal"
-                android:layout_marginTop="100px"
-                android:rowCount="3">
+                android:layout_height="1dp"
+                android:background="@color/bottom" />
 
-            </GridLayout>
+
+            <TextView
+                android:id="@+id/txt_sleep_sound"
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:text="SLEEP SOUND"
+                android:textColor="@color/img_btn_background"
+                android:textSize="60px"
+                android:layout_marginTop="50px"
+                android:layout_marginBottom="50px"
+                android:layout_marginLeft="50px"
+                >
+            </TextView>
 
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="5"
                 android:orientation="horizontal"
+                android:layout_marginBottom="100dp"
                 android:rowCount="2">
 
                 <ImageButton
