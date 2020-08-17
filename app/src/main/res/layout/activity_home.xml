@@ -8,21 +8,423 @@
     android:background="@drawable/b12"
     >
 
-    <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginBottom="8dp"
-            />
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
         <LinearLayout
-            android:id="@+id/SliderDots"
-            android:layout_below="@+id/viewPager"
-            android:orientation="horizontal"
-            android:gravity="center_vertical|center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_below ="@+id/txt_sleep"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_sleep"
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+                android:text="Confidence"
+                android:textColor="@color/img_btn_background"
+                android:textSize="100px"
+                android:layout_marginTop="50px"
+                android:layout_marginBottom="50px"
+                android:layout_marginLeft="50px"
+                >
+            </TextView>
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-60px"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:layout_marginBottom="50px"
+                android:rowCount="1">
+
+                <LinearLayout
+                    android:id="@+id/linLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+
+                    <ImageButton
+                        android:id="@+id/c1_btn"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="33sp"
+                        android:layout_marginTop="50px"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/w4" />
+
+
+                    <TextView
+                        android:id="@+id/c1_text2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:text="Sleep well"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c1_text"
+                        android:layout_width="200dp"
+                        android:layout_below ="@+id/c1_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="      Sleep starts from brain"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+
+                    <ImageButton
+                        android:id="@+id/c2_btn"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="50px"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/w2" />
+
+
+                    <TextView
+                        android:id="@+id/c2_text2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="  Deep sleep"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c2_text"
+                        android:layout_width="130dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_below ="@+id/c2_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="GOOD NIGHT"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/txt_sleep_sound"
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+                android:text="Emotions"
+                android:textColor="@color/img_btn_background"
+                android:textSize="100px"
+                android:layout_marginTop="10px"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="50px"
+                >
+            </TextView>
+
+
+            <HorizontalScrollView
+                android:id="@+id/top_h_scroll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below ="@+id/txt_nature"
+                >
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="5"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp"
+                android:rowCount="2">
+
+                <LinearLayout
+                    android:id="@+id/linLayout2_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+
+                    <ImageButton
+                        android:id="@+id/c1_btn2_1"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="33sp"
+                        android:layout_marginTop="50px"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/r2" />
+
+
+                    <TextView
+                        android:id="@+id/c1_text2_1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:text="Sleep well"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c1_text2_2"
+                        android:layout_width="200dp"
+                        android:layout_below ="@+id/c1_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="      Sleep starts from brain"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linLayout2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+
+                    <ImageButton
+                        android:id="@+id/c2_btn2_2"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="50px"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/w3" />
+
+
+                    <TextView
+                        android:id="@+id/c2_text2_2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="  Deep sleep"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c2_text_3"
+                        android:layout_width="130dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_below ="@+id/c2_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="GOOD NIGHT"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linLayout2_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+
+                    <ImageButton
+                        android:id="@+id/c2_btn2_3"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="50px"
+                        android:layout_marginRight="20dp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/w5" />
+
+
+                    <TextView
+                        android:id="@+id/c2_text3_1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="  Deep sleep"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c2_text3_2"
+                        android:layout_width="130dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_below ="@+id/c2_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="GOOD NIGHT"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </GridLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/txt_sleep_collection"
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+                android:text="Collections"
+                android:textColor="@color/img_btn_background"
+                android:textSize="100px"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="50px"
+                >
+            </TextView>
+            <GridLayout
+                android:id="@+id/grid_row3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="5"
+                android:orientation="horizontal"
+                android:layout_marginBottom="100dp"
+                android:layout_below="@+id/txt_sleep_collection"
+                android:rowCount="2">
+
+                <LinearLayout
+                    android:id="@+id/linLayout3_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+
+                    <ImageButton
+                        android:id="@+id/c1_btn3_1"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="33sp"
+                        android:layout_marginTop="50px"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/s3" />
+
+
+                    <TextView
+                        android:id="@+id/c1_text3_1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:text="Sleep well"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c1_text3_2"
+                        android:layout_width="200dp"
+                        android:layout_below ="@+id/c1_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="      Sleep starts from brain"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linLayout3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+
+                    <ImageButton
+                        android:id="@+id/c2_btn3_2"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="50px"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/main_button"
+                        android:src="@drawable/s2" />
+
+
+                    <TextView
+                        android:id="@+id/c2_text3_3"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-50dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="  Deep sleep"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/c2_text3_4"
+                        android:layout_width="130dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_below ="@+id/c2_text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="GOOD NIGHT"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+            </GridLayout>
+
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginBottom="8dp"
+                android:layout_below="@+id/grid_row3"
+                />
+
+            <LinearLayout
+                android:id="@+id/SliderDots"
+                android:layout_below="@+id/viewPager"
+                android:orientation="horizontal"
+                android:layout_marginBottom="100dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
 
 
 
