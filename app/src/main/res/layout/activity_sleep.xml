@@ -147,7 +147,7 @@
             </TextView>
 
             <LinearLayout
-                android:id="@+id/button"
+                android:id="@+id/lin_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -191,7 +191,7 @@
                 android:layout_height="1dp"
                 android:background="@color/bottom" />
             <LinearLayout
-                android:id="@+id/button2"
+                android:id="@+id/lin_button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -234,7 +234,7 @@
                 android:layout_height="1dp"
                 android:background="@color/bottom" />
             <LinearLayout
-                android:id="@+id/button3"
+                android:id="@+id/lin_button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"

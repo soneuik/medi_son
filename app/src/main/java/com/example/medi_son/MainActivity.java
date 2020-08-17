@@ -234,29 +234,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.nav_home:
-                    startActivity(new Intent(getApplicationContext(), SleepActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-
-                case R.id.nav_sleep:
-                    startActivity(new Intent(getApplicationContext(), SleepActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-
-                case R.id.nav_Sound:
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-
-            }
-            return false;
-        }
-
-    };
 
 }

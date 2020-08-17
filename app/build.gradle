@@ -3,7 +3,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\Dev1\\medison.jks')
+            storeFile file('C:\\Program Files\\Android\\key\\medison.jks')
             keyAlias = 'soneuik'
             keyPassword 'dmldlr02'
             storePassword 'dmldlr02'
