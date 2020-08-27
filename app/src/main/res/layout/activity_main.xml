@@ -132,24 +132,13 @@
         </HorizontalScrollView>
 
 
-    <TextView
-        android:id="@+id/txt_classic"
-        android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:text="Classic Sound"
-        android:textColor="@color/img_btn_background"
-        android:textSize="80px"
-        android:layout_marginTop="50px"
-        android:layout_marginLeft="50px"
-        android:layout_below="@+id/top_h_scroll"
-        >
-    </TextView>
+
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scroll_view"
-            android:layout_below ="@+id/txt_classic"
+            android:layout_below ="@+id/top_h_scroll"
             android:layout_marginTop="100px"
             android:layout_marginBottom="100dp"
             >
