@@ -6,15 +6,32 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class HomeActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -23,14 +40,21 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
     private int dotscount;
     private ImageView[] dots;
 
-
-
-
+    //Initialzing Imagebuttons
     ImageButton btn_bonfire1, btn_bonfire2;
     ImageButton btn_wave1,btn_wave2,btn_wave3;
     ImageButton btn_rain1, btn_rain2,btn_rain3,btn_rain4;
     ImageButton btn_thunder1, btn_thunder2,btn_thunder3 ;
+    ImageButton btn_img ;
     private MediaPlayer mp;
+    //Firebase
+    private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    private StorageReference dateRef;
+    //images names
+    String[] img_arr =   {"bonfire1", "bonfire2",
+                        "wave1","wave2","wave3",
+                        "rain1","rain2","rain3","rain4",
+                        "thunder1","thunder2","thunder3"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +68,6 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
         btn_bonfire1.setOnClickListener(this);
         btn_bonfire2 = (ImageButton) findViewById(R.id.btn_bonfire2);
         btn_bonfire2.setOnClickListener(this);
-
         //btn_wave
         btn_wave1 = (ImageButton) findViewById(R.id.btn_wave1);
         btn_wave1.setOnClickListener(this);
@@ -72,11 +95,60 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
         btn_thunder3.setOnClickListener(this);
 
 
+        //image loader
+        for(int i=0; i<img_arr.length; i++){
+            String btn_name = "btn_" + img_arr[i];
+
+            System.out.println("btn_name: "+btn_name);
+            int id = 0;
+
+            switch(btn_name) {
+                case "btn_bonfire1":
+                    btn_img =btn_bonfire1;
+                    break;
+                case "btn_bonfire2":
+                    btn_img =btn_bonfire2;
+                    break;
+                case "btn_wave1":
+                    btn_img =btn_wave1;
+                    break;
+                case "btn_wave2":
+                    btn_img =btn_wave1;
+                    break;
+                case "btn_wave3":
+                    btn_img =btn_wave3;
+                    break;
+                case "btn_thunder1":
+                    btn_img =btn_thunder1;
+                    break;
+                case "btn_thunder2":
+                    btn_img =btn_thunder2;
+                    break;
+                case "btn_thunder3":
+                    btn_img =btn_thunder3;
+                    break;
+                case "btn_rain1":
+                    btn_img =btn_rain1;
+                    break;
+                case "btn_rain2":
+                    btn_img =btn_rain2;
+                    break;
+                case "btn_rain3":
+                    btn_img =btn_wave3;
+                    break;
+                case "btn_rain4":
+                    btn_img =btn_rain4;
+                    break;
+
+            }
+            image_loader(img_arr[i], btn_img);
+        }
+
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
-
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -97,8 +169,6 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                 return false;
             }
         });
-
-
 
 
 
@@ -241,4 +311,74 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
         }
 
     }
+
+
+
+    private void image_loader(final String image_name, final ImageButton img_btn_name){
+
+        storageRef.child("images/"+image_name+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+
+
+                Glide.with(HomeActivity.this)
+                        .load(uri)
+                        .apply(new RequestOptions()
+                                .placeholder(R.mipmap.ic_launcher)
+                                .override(400, 550)
+                        )
+                        .into(img_btn_name);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                        storageRef.child("images/"+image_name+".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+
+
+                                Glide.with(HomeActivity.this)
+                                        .load(uri)
+                                        .apply(new RequestOptions()
+                                                .placeholder(R.mipmap.ic_launcher)
+                                                .override(400, 550)
+                                        )
+                                        .into(img_btn_name);
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                storageRef.child("images/"+image_name+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+
+
+                                        Glide.with(HomeActivity.this)
+                                                .load(uri)
+                                                .apply(new RequestOptions()
+                                                        .placeholder(R.mipmap.ic_launcher)
+                                                        .override(400, 550)
+                                                )
+                                                .into(img_btn_name);
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception exception) {
+                                        // Handle any errors
+                                    }
+                                });
+                            }
+                        });
+            }
+        });
+
+
+
+
+    }
+
+
 }

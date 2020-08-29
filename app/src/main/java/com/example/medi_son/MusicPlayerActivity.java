@@ -32,26 +32,15 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private MediaPlayer mp = new MediaPlayer();
     private  Timer timer;
     CountDownTimer CountDownTimer;
-
-
-
     private TextView tv;
     private ImageButton play_btn ;
     private ImageView gif_img;
-
-
 
     private String timer_selected= "";
     private String name_music ="";
     private int time = 0;
     private String song ="";
-
-
-
     private  WebView webView;
-
-
-
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private StorageReference dateRef;
 
