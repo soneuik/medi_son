@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -61,6 +64,11 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        if(!isOnline()){
+
+        }
 
 
         //btn_bonfire
@@ -379,6 +387,19 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
 
 
     }
+
+
+    //인터넷 연결 확인
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 }
