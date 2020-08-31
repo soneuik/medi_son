@@ -69,7 +69,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
             "https://media.giphy.com/media/ivcVZnZAEqhs4/giphy.gif",
             "https://media.giphy.com/media/1LAArSrLLApVu/giphy.gif",
             "https://media.giphy.com/media/yTrcALesdjU5O/giphy.gif",
-            "https://media.giphy.com/media/ZTAojHK9IHsSQ/giphy.gif"
+            "https://media.giphy.com/media/ZTAojHK9IHsSQ/giphy.gif",
+            "https://media.giphy.com/media/7CPPm2qysqX7O/giphy.gif",
+            "https://media.giphy.com/media/HGvjR72DXRHWw/giphy.gif",
+            "https://media.giphy.com/media/l2JI8AgTO04zOi62Y/giphy.gif",
+            "https://media.giphy.com/media/yTrcALesdjU5O/giphy.gif",
+            "https://media.giphy.com/media/128ydcHOsrk5GM/giphy.gif"
     };
     //thunder
     private String [] gif_arr_thunder= {
@@ -77,8 +82,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
             "https://media.giphy.com/media/HhhajSmRfikXC/giphy.gif",
             "https://media.giphy.com/media/iN6lLmUb8exMI/giphy.gif"
     };
-
-    //thunder
+    //etc
     private String [] gif_arr_etc= {
             "https://media.giphy.com/media/2R1QSI7WEUF4A/giphy.gif",
             "https://media.giphy.com/media/eZq90yISfPjBC/giphy.gif",
