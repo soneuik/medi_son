@@ -44,13 +44,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     //GIF
     private String[] selected_arr ;
-
     private  WebView webView;
     private ImageView gif_img;
     private int gif_position ;
-
-
-
 
 
     //fire
@@ -91,7 +87,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
             "https://media.giphy.com/media/hV11SlIkkTlI74ChDM/giphy.gif",
             "https://media.giphy.com/media/cP4xcfdLaoOjEUhbL0/giphy.gif"
     };
-
 
 
 
@@ -167,6 +162,25 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     case "20min":
                         time= 1200;
                         break;
+
+                    case "3min":
+                        time= 1800;
+                        break;
+                    case "40min":
+                        time= 2400;
+                        break;
+                    case "50min":
+                        time= 3000;
+                        break;
+
+
+                    case "60min":
+                        time= 3600;
+                        break;
+                    case "120min":
+                        time= 7200;
+                        break;
+
                     default:
                         time= 300;
                         break;
