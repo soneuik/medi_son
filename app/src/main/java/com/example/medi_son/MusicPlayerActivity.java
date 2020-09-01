@@ -136,6 +136,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     private void playMp3 (String nameOfFile){
         // Points to the root reference
+        int check = nameOfFile.indexOf("sleep");
+
+
         dateRef = storageRef.child("/" + nameOfFile+ ".mp3");
         dateRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>()
         {

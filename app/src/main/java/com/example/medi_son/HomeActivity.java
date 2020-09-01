@@ -35,10 +35,10 @@ import java.net.URL;
 
 public class HomeActivity extends AppCompatActivity  implements View.OnClickListener{
 
-    ViewPager viewPager;
+/*    ViewPager viewPager;
     LinearLayout sliderDotspanel;
     private int dotscount;
-    private ImageView[] dots;
+    private ImageView[] dots;*/
 
     //Initialzing Imagebuttons
     ImageButton btn_bonfire1, btn_bonfire2;
@@ -113,7 +113,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                     btn_img =btn_wave1;
                     break;
                 case "btn_wave2":
-                    btn_img =btn_wave1;
+                    btn_img =btn_wave2;
                     break;
                 case "btn_wave3":
                     btn_img =btn_wave3;
@@ -134,7 +134,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                     btn_img =btn_rain2;
                     break;
                 case "btn_rain3":
-                    btn_img =btn_wave3;
+                    btn_img =btn_rain3;
                     break;
                 case "btn_rain4":
                     btn_img =btn_rain4;
@@ -171,6 +171,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
         });
 
 
+/*
 
         ///////////////////////displaying dots indicator-START /////////////////////////////////////////////////////////////////////////////////////////////
     //https://www.sanktips.com/2017/10/01/how-to-add-dots-indicator-to-image-slider-with-viewpager-in-android-studio/
@@ -223,6 +224,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
             }
         });
         ///////////////////////displaying dots indicator-END /////////////////////////////////////////////////////////////////////////////////////////////
+*/
 
     }
 

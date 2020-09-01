@@ -84,7 +84,7 @@
                         android:layout_marginLeft="20sp"
                         android:layout_marginTop="50px"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/bonfire4" />
+                          />
 
 
                     <TextView
@@ -144,7 +144,7 @@
                         android:layout_marginLeft="33sp"
                         android:layout_marginTop="50px"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/wave2" />
+                      />
 
 
                     <TextView
@@ -175,7 +175,7 @@
                         android:layout_marginLeft="20sp"
                         android:layout_marginTop="50px"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/wave6" />
+                        />
 
 
                     <TextView
@@ -208,7 +208,7 @@
                         android:layout_marginTop="50px"
                         android:layout_marginRight="20dp"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/wave1" />
+                         />
 
 
                     <TextView
@@ -233,7 +233,7 @@
                 android:layout_height="150px"
                 android:text="RAIN"
                 android:textColor="@color/img_btn_background"
-                android:textSize="100px"
+                android:textSize="80px"
                 android:layout_marginBottom="10px"
                 android:layout_marginLeft="50px"
                 >
@@ -273,7 +273,7 @@
                             android:layout_marginLeft="33sp"
                             android:layout_marginTop="50px"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/rain1" />
+                              />
 
 
                         <TextView
@@ -304,7 +304,7 @@
                             android:layout_marginLeft="20sp"
                             android:layout_marginTop="50px"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/rain2" />
+                          />
 
 
                         <TextView
@@ -334,7 +334,7 @@
                             android:layout_marginLeft="20sp"
                             android:layout_marginTop="50px"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/rain3" />
+                            />
 
 
                         <TextView
@@ -366,7 +366,7 @@
                             android:layout_marginLeft="20sp"
                             android:layout_marginTop="50px"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/rain4" />
+                             />
 
 
                         <TextView
@@ -394,7 +394,7 @@
                 android:layout_height="150px"
                 android:text="THUNDER"
                 android:textColor="@color/img_btn_background"
-                android:textSize="100px"
+                android:textSize="80px"
                 android:layout_marginBottom="10px"
                 android:layout_marginLeft="50px"
                 >
@@ -434,7 +434,7 @@
                             android:layout_marginLeft="33sp"
                             android:layout_marginTop="50px"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/thunder6" />
+                            />
 
 
                         <TextView
@@ -465,7 +465,7 @@
                             android:layout_marginLeft="20sp"
                             android:layout_marginTop="50px"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/thunder7" />
+                           />
 
 
                         <TextView
@@ -497,7 +497,7 @@
                             android:layout_marginLeft="20sp"
                             android:layout_marginTop="50px"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/thunder5" />
+                           />
 
 
                         <TextView
@@ -529,14 +529,7 @@
 
 
 
-
-
-
-
-
-
-
-
+<!--
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="350dp"
@@ -555,6 +548,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+-->
 
 
 

@@ -5,21 +5,46 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class SleepActivity extends AppCompatActivity implements View.OnClickListener{
 
-    ImageButton c1_btn, c2_btn;
-    ImageButton row1_1, row1_2, row1_3, row1_4, row1_5;
-    ImageButton row2_1, row2_2, row2_3, row2_4, row2_5;
+
+    String[] img_arr =   {"sleep1", "sleep2",
+                          "sleep3","sleep4","sleep5",
+                            "sleep6","sleep7","sleep8",
+                            "sleep9","sleep10","sleep11" ,
+                            "sleep12","sleep13" };
+
+
+
+    ImageButton btn_sleep1, btn_sleep2;
+    ImageButton btn_sleep3, btn_sleep4,  btn_sleep5;
+    ImageButton btn_sleep6, btn_sleep7, btn_sleep8, btn_sleep9;
+    ImageButton btn_sleep10, btn_sleep11, btn_sleep12, btn_sleep13;
+    LinearLayout lin_sleep3, lin_sleep4,lin_sleep5;
+
+    ImageButton btn_img ;
+    //Firebase
+    private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    private StorageReference dateRef;
+
+
     private MediaPlayer mp;
-    LinearLayout lin_btn1, lin_btn2,lin_btn3;
+
 
 
     @Override
@@ -35,43 +60,95 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_sleep);
 
 
-
-
-
-        //row1
-        row1_1 = (ImageButton) findViewById(R.id.row1_1);
-        row1_1.setOnClickListener(this);
-        row1_2 = (ImageButton) findViewById(R.id.row1_2);
-        row1_2.setOnClickListener(this);
-        row1_3 = (ImageButton) findViewById(R.id.row1_3);
-        row1_3.setOnClickListener(this);
-        row1_4 = (ImageButton) findViewById(R.id.row1_4);
-        row1_4.setOnClickListener(this);
-        row1_5 = (ImageButton) findViewById(R.id.row1_5);
-        row1_5.setOnClickListener(this);
-        //row2
-        row2_1 = (ImageButton) findViewById(R.id.row2_1);
-        row2_1.setOnClickListener(this);
-        row2_2 = (ImageButton) findViewById(R.id.row2_2);
-        row2_2.setOnClickListener(this);
-        row2_3 = (ImageButton) findViewById(R.id.row2_3);
-        row2_3.setOnClickListener(this);
-        row2_4 = (ImageButton) findViewById(R.id.row2_4);
-        row2_4.setOnClickListener(this);
-        row2_5 = (ImageButton) findViewById(R.id.row2_5);
-        row2_5.setOnClickListener(this);
         //classic sound buttons
-        c1_btn = (ImageButton) findViewById(R.id.c1_btn);
-        c1_btn.setOnClickListener(this);
-        c2_btn = (ImageButton) findViewById(R.id.c2_btn);
-        c2_btn.setOnClickListener(this);
+        btn_sleep1 = (ImageButton) findViewById(R.id.btn_sleep1);
+        btn_sleep1.setOnClickListener(this);
+        btn_sleep2 = (ImageButton) findViewById(R.id.btn_sleep2);
+        btn_sleep2.setOnClickListener(this);
+        btn_sleep3 = (ImageButton) findViewById(R.id.btn_sleep3);
+        btn_sleep4 = (ImageButton) findViewById(R.id.btn_sleep4);
+        btn_sleep5 = (ImageButton) findViewById(R.id.btn_sleep5);
 
-        lin_btn1 = (LinearLayout) findViewById(R.id.lin_button);
-        lin_btn1.setOnClickListener(this);
-        lin_btn2 = (LinearLayout) findViewById(R.id.lin_button2);
-        lin_btn2.setOnClickListener(this);
-        lin_btn3 = (LinearLayout) findViewById(R.id.lin_button3);
-        lin_btn3.setOnClickListener(this);
+
+
+
+
+        lin_sleep3 = (LinearLayout) findViewById(R.id.lin_sleep3);
+        lin_sleep3.setOnClickListener(this);
+        lin_sleep4 = (LinearLayout) findViewById(R.id.lin_sleep4);
+        lin_sleep4.setOnClickListener(this);
+        lin_sleep5 = (LinearLayout) findViewById(R.id.lin_sleep5);
+        lin_sleep5.setOnClickListener(this);
+
+        btn_sleep6 = (ImageButton) findViewById(R.id.btn_sleep6);
+        btn_sleep6.setOnClickListener(this);
+        btn_sleep7 = (ImageButton) findViewById(R.id.btn_sleep7);
+        btn_sleep7.setOnClickListener(this);
+        btn_sleep8 = (ImageButton) findViewById(R.id.btn_sleep8);
+        btn_sleep8.setOnClickListener(this);
+        btn_sleep9 = (ImageButton) findViewById(R.id.btn_sleep9);
+        btn_sleep9.setOnClickListener(this);
+        btn_sleep10 = (ImageButton) findViewById(R.id.btn_sleep10);
+        btn_sleep10.setOnClickListener(this);
+        btn_sleep11 = (ImageButton) findViewById(R.id.btn_sleep11);
+        btn_sleep11.setOnClickListener(this);
+        btn_sleep12 = (ImageButton) findViewById(R.id.btn_sleep12);
+        btn_sleep12.setOnClickListener(this);
+        btn_sleep13 = (ImageButton) findViewById(R.id.btn_sleep13);
+        btn_sleep13.setOnClickListener(this);
+
+
+
+        //image loader
+        for(int i=0; i<img_arr.length; i++) {
+            String btn_name = "btn_" + img_arr[i];
+            System.out.println("btn_slepp: "+btn_name);
+            switch (btn_name) {
+                case "btn_sleep1":
+                    btn_img = btn_sleep1;
+                    break;
+                case "btn_sleep2":
+                    btn_img = btn_sleep2;
+                    break;
+                case "btn_sleep3":
+                    btn_img = btn_sleep3;
+                    break;
+                case "btn_sleep4":
+                    btn_img = btn_sleep4;
+                    break;
+                case "btn_sleep5":
+                    btn_img = btn_sleep5;
+                    break;
+                case "btn_sleep6":
+                    btn_img = btn_sleep6;
+                    break;
+                case "btn_sleep7":
+                    btn_img = btn_sleep7;
+                    break;
+                case "btn_sleep8":
+                    btn_img = btn_sleep8;
+                    break;
+                case "btn_sleep9":
+                    btn_img = btn_sleep9;
+                    break;
+                case "btn_sleep10":
+                    btn_img = btn_sleep10;
+                    break;
+                case "btn_sleep11":
+                    btn_img = btn_sleep11;
+                    break;
+                case "btn_sleep12":
+                    btn_img = btn_sleep12;
+                    break;
+                case "btn_sleep13":
+                    btn_img = btn_sleep13;
+                    break;
+
+            }
+            image_loader(img_arr[i], btn_img);
+        }
+
+
 
 
 
@@ -111,131 +188,81 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
         PlayerModalActivity pmm;
         switch (v.getId()) {
 
-            case R.id.row1_1:
-                song = "amazon_bird";
+            case R.id.btn_sleep1:
+                song = "sleep1";
+                pmm = new PlayerModalActivity(SleepActivity.this, song);
+                pmm.show();
+                break;
+            case R.id.btn_sleep2:
+                song = "sleep2";
+                pmm = new PlayerModalActivity(SleepActivity.this, song);
+                pmm.show();
+                break;
+            case R.id.lin_sleep3:
+                song = "sleep3";
+                pmm = new PlayerModalActivity(SleepActivity.this, song);
+                pmm.show();
+                break;
+            case R.id.lin_sleep4:
+                song = "sleep4";
+                pmm = new PlayerModalActivity(SleepActivity.this, song);
+                pmm.show();
+                break;
+            case R.id.lin_sleep5:
+                song = "sleep5";
                 pmm = new PlayerModalActivity(SleepActivity.this, song);
                 pmm.show();
                 break;
 
-            case R.id.row1_2:
-                song = "forest_bird";
+            case R.id.btn_sleep6:
+                song = "bird1";
+                pmm = new PlayerModalActivity(SleepActivity.this, song);
+                pmm.show();
+                break;
+            case R.id.btn_sleep7:
+                song = "bird2";
                 pmm = new PlayerModalActivity(SleepActivity.this, song);
                 pmm.show();
                 break;
 
-            case R.id.row1_3:
-                song = "sea_bird";
+            case R.id.btn_sleep8:
+                song = "bird3";
                 pmm = new PlayerModalActivity(SleepActivity.this, song);
                 pmm.show();
                 break;
-            case R.id.row1_4:
-                song = "river_bird";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.row1_5:
-                song = "insects";
+            case R.id.btn_sleep9:
+                song = "bird4";
                 pmm = new PlayerModalActivity(SleepActivity.this, song);
                 pmm.show();
                 break;
 
-            case R.id.row2_1:
-                song = "salmon";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.row2_2:
-                song = "sealion";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.row2_3:
+            case R.id.btn_sleep10:
                 song = "frog";
                 pmm = new PlayerModalActivity(SleepActivity.this, song);
                 pmm.show();
                 break;
-            case R.id.row2_4:
-                song = "amazon_bird";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.row2_5:
-                song = "amazon_bird";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-            /////////////////////////classic Sounds
-            case R.id.c1_btn:
-                song = "c1";
+            case R.id.btn_sleep11:
+                song = "insect";
                 pmm = new PlayerModalActivity(SleepActivity.this, song);
                 pmm.show();
                 break;
 
-            case R.id.c2_btn:
-                song = "c2";
+            case R.id.btn_sleep12:
+                song = "salmon";
                 pmm = new PlayerModalActivity(SleepActivity.this, song);
                 pmm.show();
                 break;
-            case R.id.c3_btn:
-                song = "c3";
+            case R.id.btn_sleep13:
+                song = "sealion";
                 pmm = new PlayerModalActivity(SleepActivity.this, song);
                 pmm.show();
                 break;
-            case R.id.c4_btn:
-                song = "c4";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.c5_btn:
-                song = "c5";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.c6_btn:
-                song = "c6";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.c7_btn:
-                song = "c7";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.c8_btn:
-                song = "c8";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.lin_button:
-                song = "c8";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.lin_button2:
-                song = "c8";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.lin_button3:
-                song = "c8";
-                pmm = new PlayerModalActivity(SleepActivity.this, song);
-                pmm.show();
-                break;
-
-
-
 
             default:
                 break;
         }
 
     }
-
 
 
 
@@ -246,6 +273,75 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
             mp.release();
             mp = null;
         }
+    }
+
+
+
+
+    private void image_loader(final String image_name, final ImageButton img_btn_name){
+
+        storageRef.child("images/sleep/"+image_name+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+
+
+                Glide.with(SleepActivity.this)
+                        .load(uri)
+                        .apply(new RequestOptions()
+                                .placeholder(R.mipmap.ic_launcher)
+                                .override(400, 550)
+                        )
+                        .into(img_btn_name);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                storageRef.child("images/sleep/"+image_name+".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+
+                        System.out.println("img_btn_name: "+img_btn_name);
+                        Glide.with(SleepActivity.this)
+                                .load(uri)
+                                .apply(new RequestOptions()
+                                        .placeholder(R.mipmap.ic_launcher)
+                                        .override(400, 550)
+                                )
+                                .into(img_btn_name);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        storageRef.child("images/sleep/"+image_name+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+
+
+                                Glide.with(SleepActivity.this)
+                                        .load(uri)
+                                        .apply(new RequestOptions()
+                                                .placeholder(R.mipmap.ic_launcher)
+                                                .override(400, 550)
+                                        )
+                                        .into(img_btn_name);
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+
+
+
     }
 
 
