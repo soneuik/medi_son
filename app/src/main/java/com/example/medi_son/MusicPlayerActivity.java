@@ -24,25 +24,76 @@ import com.google.firebase.storage.StorageReference;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class MusicPlayerActivity extends AppCompatActivity {
 
 
-
+    //Player
     private MediaPlayer mp = new MediaPlayer();
     private  Timer timer;
     CountDownTimer CountDownTimer;
     private TextView tv;
     private ImageButton play_btn ;
-    private ImageView gif_img;
-
     private String timer_selected= "";
     private String name_music ="";
     private int time = 0;
-    private String song ="";
-    private  WebView webView;
+    //FIREBASE
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private StorageReference dateRef;
+
+    //GIF
+    private String[] selected_arr ;
+    private  WebView webView;
+    private ImageView gif_img;
+    private int gif_position ;
+
+
+    //fire
+    private String [] gif_arr_bonfire= {
+            "https://media.giphy.com/media/Lf5DUUXwvinHq/giphy.gif",
+            "https://media.giphy.com/media/Arxo26T2VGbW8/giphy.gif"
+    };
+    //rain
+    private String [] gif_arr_rain= {
+            "https://media.giphy.com/media/vSoXkKBccEQRq/giphy.gif",
+            "https://media.giphy.com/media/vgvWTjGaBqR7W/giphy.gif",
+            "https://media.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif",
+            "https://media.giphy.com/media/dI3D3BWfDub0Q/giphy.gif",
+            "https://media.giphy.com/media/26DMWExfbZSiV0Btm/giphy.gif",
+            "https://media.giphy.com/media/s9cu1TZU37KY8/giphy.gif"
+    };
+    //wave
+    private String [] gif_arr_wave= {
+            "https://media.giphy.com/media/ivcVZnZAEqhs4/giphy.gif",
+            "https://media.giphy.com/media/ivcVZnZAEqhs4/giphy.gif",
+            "https://media.giphy.com/media/1LAArSrLLApVu/giphy.gif",
+            "https://media.giphy.com/media/yTrcALesdjU5O/giphy.gif",
+            "https://media.giphy.com/media/ZTAojHK9IHsSQ/giphy.gif",
+            "https://media.giphy.com/media/7CPPm2qysqX7O/giphy.gif",
+            "https://media.giphy.com/media/HGvjR72DXRHWw/giphy.gif",
+            "https://media.giphy.com/media/l2JI8AgTO04zOi62Y/giphy.gif",
+            "https://media.giphy.com/media/yTrcALesdjU5O/giphy.gif",
+            "https://media.giphy.com/media/128ydcHOsrk5GM/giphy.gif"
+    };
+    //thunder
+    private String [] gif_arr_thunder= {
+            "https://media.giphy.com/media/xaZCqV4weJwHu/giphy.gif",
+            "https://media.giphy.com/media/HhhajSmRfikXC/giphy.gif",
+            "https://media.giphy.com/media/iN6lLmUb8exMI/giphy.gif"
+    };
+    //etc
+    private String [] gif_arr_etc= {
+            "https://media.giphy.com/media/2R1QSI7WEUF4A/giphy.gif",
+            "https://media.giphy.com/media/eZq90yISfPjBC/giphy.gif",
+            "https://media.giphy.com/media/7LsYKNn60KhUs/giphy.gif",
+            "https://media.giphy.com/media/RsjVSZo2y3qKI/giphy.gif",
+            "https://media.giphy.com/media/hV11SlIkkTlI74ChDM/giphy.gif",
+            "https://media.giphy.com/media/cP4xcfdLaoOjEUhbL0/giphy.gif"
+    };
+
+
+
 
     @Override
     public void onBackPressed ()
@@ -69,14 +120,29 @@ public class MusicPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
 
-        storageRef = FirebaseStorage.getInstance().getReference();
 
+        if(!isOnline()){
+
+        }
 
 
         Intent intent = getIntent();
         if (intent != null){
             timer_selected = intent.getStringExtra("timer_selected");
             name_music = intent.getStringExtra("name_music");
+
+            if(gif_selector("bonfire")){
+                selected_arr = gif_arr_bonfire;
+            }else if(gif_selector("wave")){
+                selected_arr = gif_arr_wave;
+            }else if(gif_selector("rain")){
+                selected_arr = gif_arr_rain;
+            }else if(gif_selector("thunder")){
+                selected_arr = gif_arr_thunder;
+            }else{
+                selected_arr = gif_arr_etc;
+            }
+           gif_position = ThreadLocalRandom.current().nextInt(0, selected_arr.length );
         }
 
 
@@ -100,6 +166,25 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     case "20min":
                         time= 1200;
                         break;
+
+                    case "3min":
+                        time= 1800;
+                        break;
+                    case "40min":
+                        time= 2400;
+                        break;
+                    case "50min":
+                        time= 3000;
+                        break;
+
+
+                    case "60min":
+                        time= 3600;
+                        break;
+                    case "120min":
+                        time= 7200;
+                        break;
+
                     default:
                         time= 300;
                         break;
@@ -121,12 +206,13 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 play_btn.setVisibility(View.GONE);
 
 
-
                 //GIF 실행
-                String filePath = "https://media3.giphy.com/media/Ddab9zJPtaEmI/200.webp?cid=ecf05e47a66faf749d8ed5928cb24190cc9d35d75d3599d1&rid=200.webp";
+                String filePath = "";
+                filePath = selected_arr[gif_position];
                 webView.setVisibility(View.VISIBLE);
+                webView.getSettings().setJavaScriptEnabled(true);
                 //webView.loadDataWithBaseURL("file:///android_asset/",data,"text/html","UTF-8",null);
-                webView.loadData("<html><head><style type='text/css'>body{margin:auto auto;text-align:center;} img{width:100%25; height:100%;} </style></head><body><img src="+filePath+"/></body></html>" ,"text/html",  "UTF-8");
+                webView.loadData("<html><head><style type='text/css'>body{margin:auto auto;text-align:center;} img{width:100%25; height:100%;} </style></head><body><img src='"+filePath+"'/></body></html>" ,"text/html",  "UTF-8");
             }
         });
 
@@ -186,9 +272,49 @@ public class MusicPlayerActivity extends AppCompatActivity {
     }
 
 
+
+    private boolean gif_selector(String song_kind){
+        boolean result = name_music.contains(song_kind);
+        return result;
+    }
+
+
+    //인터넷 연결 확인
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //////////////////////////////NOT USED but useful///////////////////////////////////////////////////////////
-
-
     private void stopPlaying() {
         if (mp != null) {
             mp.stop();
@@ -247,23 +373,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // return timer string
         return finalTimerString;
     }
-
-
-    //인터넷 연결 확인
-    public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-
-
-
 
 
 

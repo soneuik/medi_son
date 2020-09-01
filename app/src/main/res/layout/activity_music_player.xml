@@ -9,12 +9,19 @@
     >
 
 
-
+    <WebView
+        android:id="@+id/gif_img"
+        android:layout_width="match_parent"
+        android:layout_height="1000px"
+        android:layout_gravity="center"
+        >
+    </WebView>
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="700px"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_below="@+id/gif_img"
         >
 
 
@@ -23,29 +30,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:textColor="#FFFFFF"
             android:text=""
             android:textSize="50dp"
             >
         </TextView>
-        <WebView
-            android:id="@+id/gif_img"
-            android:layout_width="300px"
-            android:layout_height="300px"
-            android:layout_marginBottom="100dp"
-            android:layout_below="@+id/timer_text"
-            android:layout_gravity="center"
-            >
-        </WebView>
+
 
 
 
         <ImageButton
             android:id="@+id/play_btn"
             android:src="@drawable/play"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="100dp"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:layout_below="@+id/gif_img"
             android:layout_width="300px"
             android:layout_height="300px"
             android:layout_centerHorizontal="true"
