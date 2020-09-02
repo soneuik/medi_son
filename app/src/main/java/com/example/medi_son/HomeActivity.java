@@ -18,6 +18,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -92,8 +93,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
 
         mAdView = findViewById(R.id.ad_banner);
         adMob_banner();
-
-        AdLoader adLoader = new AdLoader.Builder(HomeActivity.this, "ca-app-pub-3940256099942544/2247696110")
+        AdLoader adLoader = new AdLoader.Builder(HomeActivity.this, "ca-app-pub-6769539245756212/4501572000")
                 .forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
                     @Override
                     public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
@@ -481,6 +481,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
                 // Code to be executed when an ad request fails.
+                Log.d("ADMOB_ERROR_CODE", "admob error code: " + adError);
             }
 
             @Override

@@ -61,11 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
-
-
-
-
         //Nature sound buttons
 
         //classic sound buttons
