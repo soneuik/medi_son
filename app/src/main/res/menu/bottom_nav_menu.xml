@@ -5,21 +5,18 @@
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
         android:title="Nature"
-        android:iconTint="@drawable/bottom_navigation_selector"
         />
 
     <item
         android:id="@+id/nav_sleep"
         android:icon="@drawable/ic_sleep2"
         android:title="Sleep"
-        android:iconTint="@drawable/bottom_navigation_selector"
         />
 
     <item
         android:id="@+id/nav_Sound"
         android:icon="@drawable/ic_sleep"
         android:title="Sound"
-        android:iconTint="@drawable/bottom_navigation_selector"
         />
 
 </menu>

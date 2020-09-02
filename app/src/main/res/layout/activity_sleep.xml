@@ -2,21 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@drawable/b112"
     >
 
 
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below ="@+id/txt_sleep"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:id="@+id/txt_sleep"
@@ -55,7 +58,7 @@
                         android:layout_marginLeft="33sp"
                         android:layout_marginTop="50px"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/sleep1" />
+                         />
 
 
                     <TextView
@@ -98,7 +101,7 @@
                         android:layout_marginLeft="20sp"
                         android:layout_marginTop="50px"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/sleep2" />
+                         />
 
 
                     <TextView
@@ -294,7 +297,7 @@
                 android:layout_height="wrap_content"
                 android:columnCount="4"
                 android:orientation="horizontal"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="150dp"
                 android:rowCount="2">
 
                 <ImageButton
@@ -302,24 +305,21 @@
                     android:layout_width="200px"
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/r1" />
+                      />
 
                 <ImageButton
                     android:id="@+id/btn_sleep7"
                     android:layout_width="200px"
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/r2" />
+                     />
 
                 <ImageButton
                     android:id="@+id/btn_sleep8"
                     android:layout_width="200px"
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
-                    android:background="@drawable/b12"
-                    android:src="@drawable/r3" />
+                      />
 
 
                 <ImageButton
@@ -327,8 +327,7 @@
                     android:layout_width="200px"
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
-                    android:background="@drawable/b12"
-                    android:src="@drawable/w1" />
+                     />
 
 
                 <ImageButton
@@ -337,8 +336,7 @@
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
                     android:layout_marginTop="25px"
-                    android:background="@drawable/b12"
-                    android:src="@drawable/w2" />
+                      />
 
                 <ImageButton
                     android:id="@+id/btn_sleep11"
@@ -346,8 +344,7 @@
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
                     android:layout_marginTop="25px"
-                    android:background="@drawable/b12"
-                    android:src="@drawable/w3" />
+                     />
 
                 <ImageButton
                     android:id="@+id/btn_sleep12"
@@ -355,8 +352,7 @@
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
                     android:layout_marginTop="25px"
-                    android:background="@drawable/b12"
-                    android:src="@drawable/w4" />
+                      />
 
                 <ImageButton
                     android:id="@+id/btn_sleep13"
@@ -364,13 +360,32 @@
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
                     android:layout_marginTop="25px"
-                    android:background="@drawable/b12"
-                    android:src="@drawable/w5" />
+                      />
             </GridLayout>
         </LinearLayout>
 
 
+
     </ScrollView>
+
+
+    <!--test:  ca-app-pub-3940256099942544/6300978111-->
+    <!--banner:  ca-app-pub-6769539245756212/5054136158-->
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6769539245756212/5054136158"
+        android:layout_marginBottom="60dp"
+        >
+    </com.google.android.gms.ads.AdView>
+
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
@@ -378,6 +393,8 @@
         android:layout_height="wrap_content"
         android:background="@color/bottom"
         android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
         app:menu="@menu/bottom_nav_menu" />
 
 

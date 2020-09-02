@@ -14,6 +14,13 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,12 +31,12 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
 
 
     String[] img_arr =   {"sleep1", "sleep2",
-                          "sleep3","sleep4","sleep5",
-                            "sleep6","sleep7","sleep8",
-                            "sleep9","sleep10","sleep11" ,
-                            "sleep12","sleep13" };
+                          "sleep3","sleep4","sleep5"  };
 
-
+    String[] img_arr2 =   {
+            "sleep6","sleep7","sleep8",
+            "sleep9","sleep10","sleep11" ,
+            "sleep12","sleep13" };
 
     ImageButton btn_sleep1, btn_sleep2;
     ImageButton btn_sleep3, btn_sleep4,  btn_sleep5;
@@ -44,7 +51,7 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
 
 
     private MediaPlayer mp;
-
+    private AdView mAdView;
 
 
     @Override
@@ -60,6 +67,14 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_sleep);
 
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+
+        mAdView = findViewById(R.id.ad_banner);
         //classic sound buttons
         btn_sleep1 = (ImageButton) findViewById(R.id.btn_sleep1);
         btn_sleep1.setOnClickListener(this);
@@ -68,18 +83,12 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
         btn_sleep3 = (ImageButton) findViewById(R.id.btn_sleep3);
         btn_sleep4 = (ImageButton) findViewById(R.id.btn_sleep4);
         btn_sleep5 = (ImageButton) findViewById(R.id.btn_sleep5);
-
-
-
-
-
         lin_sleep3 = (LinearLayout) findViewById(R.id.lin_sleep3);
         lin_sleep3.setOnClickListener(this);
         lin_sleep4 = (LinearLayout) findViewById(R.id.lin_sleep4);
         lin_sleep4.setOnClickListener(this);
         lin_sleep5 = (LinearLayout) findViewById(R.id.lin_sleep5);
         lin_sleep5.setOnClickListener(this);
-
         btn_sleep6 = (ImageButton) findViewById(R.id.btn_sleep6);
         btn_sleep6.setOnClickListener(this);
         btn_sleep7 = (ImageButton) findViewById(R.id.btn_sleep7);
@@ -102,7 +111,6 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
         //image loader
         for(int i=0; i<img_arr.length; i++) {
             String btn_name = "btn_" + img_arr[i];
-            System.out.println("btn_slepp: "+btn_name);
             switch (btn_name) {
                 case "btn_sleep1":
                     btn_img = btn_sleep1;
@@ -119,6 +127,17 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                 case "btn_sleep5":
                     btn_img = btn_sleep5;
                     break;
+
+            }
+            image_loader(img_arr[i], btn_img);
+
+        }
+
+
+        //image loader
+        for(int i=0; i<img_arr2.length; i++) {
+            String btn_name = "btn_" + img_arr2[i];
+            switch (btn_name) {
                 case "btn_sleep6":
                     btn_img = btn_sleep6;
                     break;
@@ -145,8 +164,15 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                     break;
 
             }
-            image_loader(img_arr[i], btn_img);
+            image_loader2(img_arr2[i], btn_img);
+
+
+
+            adMob_banner();
         }
+
+
+
 
 
 
@@ -289,7 +315,7 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                         .load(uri)
                         .apply(new RequestOptions()
                                 .placeholder(R.mipmap.ic_launcher)
-                                .override(400, 550)
+                                .override(400, 200)
                         )
                         .into(img_btn_name);
 
@@ -306,7 +332,7 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                                 .load(uri)
                                 .apply(new RequestOptions()
                                         .placeholder(R.mipmap.ic_launcher)
-                                        .override(400, 550)
+                                        .override(400, 200)
                                 )
                                 .into(img_btn_name);
 
@@ -323,7 +349,7 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                                         .load(uri)
                                         .apply(new RequestOptions()
                                                 .placeholder(R.mipmap.ic_launcher)
-                                                .override(400, 550)
+                                                .override(400, 200)
                                         )
                                         .into(img_btn_name);
 
@@ -341,6 +367,127 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
 
 
 
+
+    }
+
+
+
+    private void image_loader2(final String image_name, final ImageButton img_btn_name){
+
+        storageRef.child("images/sleep/"+image_name+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+
+
+                Glide.with(SleepActivity.this)
+                        .load(uri)
+                        .apply(new RequestOptions()
+                                .placeholder(R.mipmap.ic_launcher)
+                                .override(200, 200)
+                        )
+                        .into(img_btn_name);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                storageRef.child("images/sleep/"+image_name+".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+
+                        System.out.println("img_btn_name: "+img_btn_name);
+                        Glide.with(SleepActivity.this)
+                                .load(uri)
+                                .apply(new RequestOptions()
+                                        .placeholder(R.mipmap.ic_launcher)
+                                        .override(200, 200)
+                                )
+                                .into(img_btn_name);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        storageRef.child("images/sleep/"+image_name+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+
+
+                                Glide.with(SleepActivity.this)
+                                        .load(uri)
+                                        .apply(new RequestOptions()
+                                                .placeholder(R.mipmap.ic_launcher)
+                                                .override(200, 200)
+                                        )
+                                        .into(img_btn_name);
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+
+
+
+    }
+
+
+
+    private void adMob_banner(){
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
 
     }
 

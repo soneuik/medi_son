@@ -3,13 +3,24 @@ package com.example.medi_son;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -20,7 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton row2_1, row2_2, row2_3, row2_4, row2_5;
     //Classic Img_btn
     ImageButton c1_btn, c2_btn, c3_btn, c4_btn, c5_btn, c6_btn, c7_btn, c8_btn;
-
+    private AdView mAdView;
+    Button btn_share, btn_email;
 
 
     @Override
@@ -38,29 +50,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAdView = findViewById(R.id.ad_banner);
+        adMob_banner();
+        btn_share = (Button)findViewById(R.id.btn_share);
+        btn_share.setOnClickListener(this);
+        btn_email = (Button)findViewById(R.id.btn_email);
+        btn_email.setOnClickListener(this);
+
+
+
+
+
+
+
+
+
+
         //Nature sound buttons
-        //row1
-        row1_1 = (ImageButton) findViewById(R.id.row1_1);
-        row1_1.setOnClickListener(this);
-        row1_2 = (ImageButton) findViewById(R.id.row1_2);
-        row1_2.setOnClickListener(this);
-        row1_3 = (ImageButton) findViewById(R.id.row1_3);
-        row1_3.setOnClickListener(this);
-        row1_4 = (ImageButton) findViewById(R.id.row1_4);
-        row1_4.setOnClickListener(this);
-        row1_5 = (ImageButton) findViewById(R.id.row1_5);
-        row1_5.setOnClickListener(this);
-        //row2
-        row2_1 = (ImageButton) findViewById(R.id.row2_1);
-        row2_1.setOnClickListener(this);
-        row2_2 = (ImageButton) findViewById(R.id.row2_2);
-        row2_2.setOnClickListener(this);
-        row2_3 = (ImageButton) findViewById(R.id.row2_3);
-        row2_3.setOnClickListener(this);
-        row2_4 = (ImageButton) findViewById(R.id.row2_4);
-        row2_4.setOnClickListener(this);
-        row2_5 = (ImageButton) findViewById(R.id.row2_5);
-        row2_5.setOnClickListener(this);
+
         //classic sound buttons
         c1_btn = (ImageButton) findViewById(R.id.c1_btn);
         c1_btn.setOnClickListener(this);
@@ -117,61 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PlayerModalActivity pmm;
         switch (v.getId()) {
 
-            case R.id.row1_1:
-                song = "amazon_bird";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
 
-            case R.id.row1_2:
-                song = "forest_bird";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.row1_3:
-                song = "sea_bird";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.row1_4:
-                song = "river_bird";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.row1_5:
-                song = "insects";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.row2_1:
-                song = "salmon";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.row2_2:
-                song = "sealion";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
-
-            case R.id.row2_3:
-                song = "frog";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.row2_4:
-                song = "amazon_bird";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
-            case R.id.row2_5:
-                song = "amazon_bird";
-                pmm = new PlayerModalActivity(MainActivity.this, song);
-                pmm.show();
-                break;
             /////////////////////////classic Sounds
             case R.id.c1_btn:
                 song = "c1";
@@ -218,6 +171,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pmm.show();
                 break;
 
+            case R.id.btn_share:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.soneuik.medi_son");
+                sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, "Share");
+                startActivity(shareIntent);
+                break;
+
+            case R.id.btn_email:
+                btn_email();
+
+                break;
+
+
+
+
+
+
+
+
             default:
                 break;
         }
@@ -231,6 +205,75 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mp.release();
             mp = null;
         }
+    }
+
+
+    private void btn_email(){
+        String mailto = "mailto:soneuik30@gmail.com" +
+                "?cc=" +
+                "&subject=" + Uri.encode("your subject") +
+                "&body=" + Uri.encode("your mail body");
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse(mailto));
+
+        try {
+            startActivity(emailIntent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(MainActivity.this, "Error to open email app", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    private void adMob_banner(){
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
+
     }
 
 
