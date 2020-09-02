@@ -8,19 +8,25 @@
     android:background="@drawable/b12"
     >
 
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
         <LinearLayout
+            android:id="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below ="@+id/txt_sleep"
             android:orientation="vertical">
 
 
+
+
+
             <TextView
-                android:id="@+id/txt_sleep"
+                android:id="@+id/txt_bonfire"
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:layout_marginLeft="50px"
@@ -29,11 +35,21 @@
                 android:textColor="@color/img_btn_background"
                 android:textSize="80px"></TextView>
 
+
+            <HorizontalScrollView
+                android:id="@+id/top_h_scrol0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below ="@+id/txt_bonfire"
+                android:layout_marginTop="-10dp"
+                >
+
+
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-60px"
-                android:columnCount="2"
+                android:columnCount="3"
                 android:orientation="horizontal"
                 android:layout_marginBottom="50px"
                 android:rowCount="1">
@@ -100,8 +116,28 @@
                         android:textStyle="bold" />-->
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/btn_bonfire3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
+
+                    <com.google.android.ads.nativetemplates.TemplateView
+                        android:id="@+id/tpAdmob"
+                        app:gnt_template_type="@layout/gnt_small_template_view"
+                        android:layout_width="400px"
+                        android:layout_height="550px"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="50px"
+                        android:layout_marginRight="50dp"
+                        android:adjustViewBounds="true"
+                        />
+
+                </LinearLayout>
             </GridLayout>
+
+            </HorizontalScrollView>
 
             <TextView
                 android:id="@+id/txt_wave"
