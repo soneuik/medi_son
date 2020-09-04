@@ -4,13 +4,13 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="img_btn_background">#FFFFFFFF</color>
-    <color name="transparent">#80000000</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="black">#000000</color>
     <color name="bottom">#3D6EA3</color>
     <color name="logo_background">#0F2D49</color>
     <color name="sky_blue">#62B0DF</color>
     <color name="setting_btn">#8DD3EDFD</color>
-
+    <color name="white">#FFFFFFFF</color>
 
 
 </resources>
