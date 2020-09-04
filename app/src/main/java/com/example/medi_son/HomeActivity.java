@@ -93,7 +93,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
 
         mAdView = findViewById(R.id.ad_banner);
         adMob_banner();
-        AdLoader adLoader = new AdLoader.Builder(HomeActivity.this, "ca-app-pub-6769539245756212/4501572000")
+       /* AdLoader adLoader = new AdLoader.Builder(HomeActivity.this, "ca-app-pub-6769539245756212/4501572000")
                 .forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
                     @Override
                     public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
@@ -114,7 +114,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                         .build())
                 .build();
 
-        adLoader.loadAds(new AdRequest.Builder().build(), 3);
+        adLoader.loadAds(new AdRequest.Builder().build(), 3);*/
 
 
 
@@ -388,7 +388,6 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                 Glide.with(HomeActivity.this)
                         .load(uri)
                         .apply(new RequestOptions()
-                                .placeholder(R.mipmap.ic_launcher)
                                 .override(400, 550)
                         )
                         .into(img_btn_name);
@@ -405,7 +404,6 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                                 Glide.with(HomeActivity.this)
                                         .load(uri)
                                         .apply(new RequestOptions()
-                                                .placeholder(R.mipmap.ic_launcher)
                                                 .override(400, 550)
                                         )
                                         .into(img_btn_name);
@@ -422,7 +420,6 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                                         Glide.with(HomeActivity.this)
                                                 .load(uri)
                                                 .apply(new RequestOptions()
-                                                        .placeholder(R.mipmap.ic_launcher)
                                                         .override(400, 550)
                                                 )
                                                 .into(img_btn_name);

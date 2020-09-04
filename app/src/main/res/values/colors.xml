@@ -7,6 +7,10 @@
     <color name="transparent">#80000000</color>
     <color name="black">#000000</color>
     <color name="bottom">#3D6EA3</color>
+    <color name="logo_background">#0F2D49</color>
+    <color name="sky_blue">#62B0DF</color>
+    <color name="setting_btn">#8DD3EDFD</color>
+
 
 
 </resources>

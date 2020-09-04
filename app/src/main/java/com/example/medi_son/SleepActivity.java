@@ -174,14 +174,8 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
 
 
 
-
-
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
-
         bottomNavigationView.setSelectedItemId(R.id.nav_sleep);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -382,7 +376,7 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                 Glide.with(SleepActivity.this)
                         .load(uri)
                         .apply(new RequestOptions()
-                                .placeholder(R.mipmap.ic_launcher)
+                                .placeholder(R.drawable.loading)
                                 .override(200, 200)
                         )
                         .into(img_btn_name);
@@ -399,7 +393,6 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                         Glide.with(SleepActivity.this)
                                 .load(uri)
                                 .apply(new RequestOptions()
-                                        .placeholder(R.mipmap.ic_launcher)
                                         .override(200, 200)
                                 )
                                 .into(img_btn_name);
@@ -416,7 +409,6 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                                 Glide.with(SleepActivity.this)
                                         .load(uri)
                                         .apply(new RequestOptions()
-                                                .placeholder(R.mipmap.ic_launcher)
                                                 .override(200, 200)
                                         )
                                         .into(img_btn_name);

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Classic Img_btn
     ImageButton c1_btn, c2_btn, c3_btn, c4_btn, c5_btn, c6_btn, c7_btn, c8_btn;
     private AdView mAdView;
-    Button btn_share, btn_email;
+    Button btn_share, btn_email, btn_feedback;
 
 
     @Override
@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_share.setOnClickListener(this);
         btn_email = (Button)findViewById(R.id.btn_email);
         btn_email.setOnClickListener(this);
+        btn_feedback = (Button)findViewById(R.id.btn_feedback);
+        btn_feedback.setOnClickListener(this);
+
+
 
 
 
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Nature sound buttons
 
         //classic sound buttons
-        c1_btn = (ImageButton) findViewById(R.id.c1_btn);
+   /*     c1_btn = (ImageButton) findViewById(R.id.c1_btn);
         c1_btn.setOnClickListener(this);
         c2_btn = (ImageButton) findViewById(R.id.c2_btn);
         c2_btn.setOnClickListener(this);
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         c7_btn.setOnClickListener(this);
         c8_btn = (ImageButton) findViewById(R.id.c8_btn);
         c8_btn.setOnClickListener(this);
-
+*/
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
@@ -119,9 +123,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PlayerModalActivity pmm;
         switch (v.getId()) {
 
+            case R.id.btn_share:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.soneuik.medi_son");
+                sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, "Share");
+                startActivity(shareIntent);
+                break;
+
+            case R.id.btn_email:
+                btn_email();
+                break;
+
+            case R.id.btn_feedback:
+                btn_feedback();
+                break;
+
 
             /////////////////////////classic Sounds
-            case R.id.c1_btn:
+         /*   case R.id.c1_btn:
                 song = "c1";
                 pmm = new PlayerModalActivity(MainActivity.this, song);
                 pmm.show();
@@ -164,21 +185,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 song = "c8";
                 pmm = new PlayerModalActivity(MainActivity.this, song);
                 pmm.show();
-                break;
+                break;*/
 
-            case R.id.btn_share:
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.soneuik.medi_son");
-                sendIntent.setType("text/plain");
-                Intent shareIntent = Intent.createChooser(sendIntent, "Share");
-                startActivity(shareIntent);
-                break;
 
-            case R.id.btn_email:
-                btn_email();
-
-                break;
 
 
 
@@ -218,6 +227,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
+    private void btn_feedback(){
+
+            // TODO Auto-generated method stub
+            final String myappPackageName = "com.soneuik.medi_son"; // getPackageName() from Context or Activity object
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + myappPackageName)));
+            } catch (android.content.ActivityNotFoundException anfe) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + myappPackageName)));
+            }
+    }
+
 
 
     private void adMob_banner(){
