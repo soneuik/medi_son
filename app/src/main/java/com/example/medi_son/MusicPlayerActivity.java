@@ -56,40 +56,39 @@ public class MusicPlayerActivity extends AppCompatActivity {
     };
     //rain
     private String [] gif_arr_rain= {
-            "https://media.giphy.com/media/vSoXkKBccEQRq/giphy.gif",
-            "https://media.giphy.com/media/vgvWTjGaBqR7W/giphy.gif",
-            "https://media.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif",
-            "https://media.giphy.com/media/dI3D3BWfDub0Q/giphy.gif",
-            "https://media.giphy.com/media/26DMWExfbZSiV0Btm/giphy.gif",
-            "https://media.giphy.com/media/s9cu1TZU37KY8/giphy.gif"
+            "https://media.giphy.com/media/vSoXkKBccEQRq/giphy-downsized.gif",
+            "https://media.giphy.com/media/vgvWTjGaBqR7W/giphy-downsized.gif",
+            "https://media.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy-downsized.gif",
+            "https://media.giphy.com/media/dI3D3BWfDub0Q/giphy-downsized.gif",
+            "https://media.giphy.com/media/26DMWExfbZSiV0Btm/giphy-downsized.gif",
+            "https://media.giphy.com/media/s9cu1TZU37KY8/giphy-downsized.gif",
+            "https://media.giphy.com/media/PN23U6cVRWFFe/giphy-downsized.gif",
+            "https://media.giphy.com/media/c0Xv8u8E5HBio/giphy-downsized.gif",
+            "https://media.giphy.com/media/JFkqrke8kBZTy/giphy-downsized.gif"
     };
     //wave
     private String [] gif_arr_wave= {
-            "https://media.giphy.com/media/ivcVZnZAEqhs4/giphy.gif",
-            "https://media.giphy.com/media/ivcVZnZAEqhs4/giphy.gif",
-            "https://media.giphy.com/media/1LAArSrLLApVu/giphy.gif",
-            "https://media.giphy.com/media/yTrcALesdjU5O/giphy.gif",
-            "https://media.giphy.com/media/ZTAojHK9IHsSQ/giphy.gif",
-            "https://media.giphy.com/media/7CPPm2qysqX7O/giphy.gif",
-            "https://media.giphy.com/media/HGvjR72DXRHWw/giphy.gif",
-            "https://media.giphy.com/media/l2JI8AgTO04zOi62Y/giphy.gif",
-            "https://media.giphy.com/media/yTrcALesdjU5O/giphy.gif",
-            "https://media.giphy.com/media/128ydcHOsrk5GM/giphy.gif"
+            "https://media.giphy.com/media/ZTAojHK9IHsSQ/giphy-downsized.gif",
+            "https://media.giphy.com/media/7CPPm2qysqX7O/giphy-downsized.gif",
+            "https://media.giphy.com/media/HGvjR72DXRHWw/giphy-downsized.gif",
+            "https://media.giphy.com/media/l2JI8AgTO04zOi62Y/giphy-downsized.gif",
+            "https://media.giphy.com/media/128ydcHOsrk5GM/giphy-downsized.gif"
     };
     //thunder
     private String [] gif_arr_thunder= {
-            "https://media.giphy.com/media/xaZCqV4weJwHu/giphy.gif",
-            "https://media.giphy.com/media/HhhajSmRfikXC/giphy.gif",
-            "https://media.giphy.com/media/iN6lLmUb8exMI/giphy.gif"
+            "https://media.giphy.com/media/xaZCqV4weJwHu/giphy-downsized.gif",
+            "https://media.giphy.com/media/HhhajSmRfikXC/giphy-downsized.gif",
+            "https://media.giphy.com/media/iN6lLmUb8exMI/giphy-downsized.gif"
     };
     //etc
     private String [] gif_arr_etc= {
-            "https://media.giphy.com/media/2R1QSI7WEUF4A/giphy.gif",
-            "https://media.giphy.com/media/eZq90yISfPjBC/giphy.gif",
-            "https://media.giphy.com/media/7LsYKNn60KhUs/giphy.gif",
-            "https://media.giphy.com/media/RsjVSZo2y3qKI/giphy.gif",
-            "https://media.giphy.com/media/hV11SlIkkTlI74ChDM/giphy.gif",
-            "https://media.giphy.com/media/cP4xcfdLaoOjEUhbL0/giphy.gif"
+            "https://media.giphy.com/media/2R1QSI7WEUF4A/giphy-downsized.gif",
+            "https://media.giphy.com/media/eZq90yISfPjBC/giphy-downsized.gif",
+            "https://media.giphy.com/media/7LsYKNn60KhUs/giphy-downsized.gif",
+            "https://media.giphy.com/media/RsjVSZo2y3qKI/giphy-downsized.gif",
+            "https://media.giphy.com/media/7NUdxH6uzeI1i/giphy-downsized.gif",
+            "https://media.giphy.com/media/zx9NCxVYq6WuA/giphy-downsized.gif",
+            "https://media.giphy.com/media/tX99OOO4FA9Pi/giphy-downsized.gif"
     };
 
 
