@@ -308,7 +308,6 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                 Glide.with(SleepActivity.this)
                         .load(uri)
                         .apply(new RequestOptions()
-                                .placeholder(R.mipmap.ic_launcher)
                                 .override(400, 200)
                         )
                         .into(img_btn_name);
@@ -325,7 +324,6 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                         Glide.with(SleepActivity.this)
                                 .load(uri)
                                 .apply(new RequestOptions()
-                                        .placeholder(R.mipmap.ic_launcher)
                                         .override(400, 200)
                                 )
                                 .into(img_btn_name);
@@ -342,7 +340,6 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                                 Glide.with(SleepActivity.this)
                                         .load(uri)
                                         .apply(new RequestOptions()
-                                                .placeholder(R.mipmap.ic_launcher)
                                                 .override(400, 200)
                                         )
                                         .into(img_btn_name);
