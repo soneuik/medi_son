@@ -1,43 +1,27 @@
-package com.example.medi_son;
+package com.soneuik.medi_son;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.android.ads.nativetemplates.TemplateView;
 import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.formats.NativeAdOptions;
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,11 +29,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class HomeActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -388,7 +367,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                 Glide.with(HomeActivity.this)
                         .load(uri)
                         .apply(new RequestOptions()
-                                .override(400, 550)
+                                .override(300, 300)
                         )
                         .into(img_btn_name);
 
@@ -404,7 +383,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                                 Glide.with(HomeActivity.this)
                                         .load(uri)
                                         .apply(new RequestOptions()
-                                                .override(400, 550)
+                                                .override(300, 300)
                                         )
                                         .into(img_btn_name);
 
@@ -420,7 +399,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                                         Glide.with(HomeActivity.this)
                                                 .load(uri)
                                                 .apply(new RequestOptions()
-                                                        .override(400, 550)
+                                                        .override(300, 300)
                                                 )
                                                 .into(img_btn_name);
 
@@ -505,6 +484,21 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+
+
+
+
+
+
 
 
 

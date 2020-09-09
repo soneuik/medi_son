@@ -1,4 +1,4 @@
-package com.example.medi_son;
+package com.soneuik.medi_son;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -7,27 +7,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class PlayerModalActivity extends Dialog implements
-        android.view.View.OnClickListener {
+public class PlayerModalActivity extends Dialog implements android.view.View.OnClickListener {
 
-        public Activity current_activity;
-        public Dialog d;
-        public Button min5, min10, min20;
-        public Button min30, min40, min50;
-        public Button min60, min120;
-        private String name_music ="";
+    public Activity current_activity;
+    public Dialog d;
+    public Button min5, min10, min20;
+    public Button min30, min40, min50;
+    public Button min60, min120;
+    private String name_music ="";
 
     public PlayerModalActivity(Activity a){
         super(a);
 
     }
 
-        public PlayerModalActivity(Activity a, String song) {
-                super(a);
-                // TODO Auto-generated constructor stub
-                this.current_activity = a;
-                name_music= song;
-        }
+    public PlayerModalActivity(Activity a, String song) {
+        super(a);
+        // TODO Auto-generated constructor stub
+        this.current_activity = a;
+        name_music= song;
+    }
 
 
 
@@ -150,23 +149,23 @@ public class PlayerModalActivity extends Dialog implements
     }
 
 
-        @Override
-        public void onClick(View v) {
-                switch (v.getId()) {
-                        case R.id.min5:
-                            current_activity.finish();
-                                break;
-                        case R.id.min10:
-                            current_activity.finish();
-                                break;
-                        case R.id.min20:
-                                dismiss();
-                                break;
-                        default:
-                                break;
-                }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.min5:
+                current_activity.finish();
+                break;
+            case R.id.min10:
+                current_activity.finish();
+                break;
+            case R.id.min20:
                 dismiss();
+                break;
+            default:
+                break;
         }
+        dismiss();
+    }
 
 
 }

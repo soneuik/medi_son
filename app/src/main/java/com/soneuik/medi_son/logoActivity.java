@@ -1,4 +1,4 @@
-package com.example.medi_son;
+package com.soneuik.medi_son;
 
 import androidx.appcompat.app.AppCompatActivity;
 

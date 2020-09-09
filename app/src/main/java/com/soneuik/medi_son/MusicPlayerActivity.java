@@ -1,16 +1,20 @@
-package com.example.medi_son;
+package com.soneuik.medi_son;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageButton;
@@ -20,13 +24,23 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.soneuik.medi_son.Services.OnClearFromRecentService;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MusicPlayerActivity extends AppCompatActivity {
+public class MusicPlayerActivity extends AppCompatActivity implements Playable {
+
+    //
+    NotificationManager notificationManager;
+
+    List<Track> tracks;
+    int position = 0;
+    boolean isPlaying = false;
+    TextView title;
 
 
     //Player
@@ -34,10 +48,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private  Timer timer;
     CountDownTimer CountDownTimer;
     private TextView tv;
-    private ImageButton play_btn ;
+    private ImageButton play_btn, pause_btn ;
     private String timer_selected= "";
     private String name_music ="";
     private int time = 0;
+    private String current_song ="";
+    private String current_timer ="";
     //FIREBASE
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private StorageReference dateRef;
@@ -47,6 +63,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private  WebView webView;
     private ImageView gif_img;
     private int gif_position ;
+
+    Intent playbackServiceIntent;
 
 
     //fire
@@ -125,10 +143,57 @@ public class MusicPlayerActivity extends AppCompatActivity {
         }
 
 
+
+        // Creating Notification Player
+        popluateTracks();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            createChannel();
+            registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACKS"));
+            startService(new Intent(getBaseContext(), OnClearFromRecentService.class));
+
+        }
+
+
+
         Intent intent = getIntent();
+        String actionname = intent.getStringExtra("actionname");
+        System.out.println("actionname: "+actionname);
         if (intent != null){
-            timer_selected = intent.getStringExtra("timer_selected");
             name_music = intent.getStringExtra("name_music");
+            timer_selected = intent.getStringExtra("timer_selected");
+
+            switch(timer_selected) {
+                case "5min":
+                    time= 300;
+                    break;
+                case "10min":
+                    time= 600;
+                    break;
+                case "20min":
+                    time= 1200;
+                    break;
+
+                case "3min":
+                    time= 1800;
+                    break;
+                case "40min":
+                    time= 2400;
+                    break;
+                case "50min":
+                    time= 3000;
+                    break;
+                case "60min":
+                    time= 3600;
+                    break;
+                case "120min":
+                    time= 7200;
+                    break;
+
+                default:
+                    time= 300;
+                    break;
+            }
+
 
             if(gif_selector("bonfire")){
                 selected_arr = gif_arr_bonfire;
@@ -151,45 +216,37 @@ public class MusicPlayerActivity extends AppCompatActivity {
         play_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mp.stop();
+                //mp.stop();
 
-                tv = findViewById(R.id.timer_text);
+                int  length=0;
+                int counter =0;
 
-                switch(timer_selected) {
-                    case "5min":
-                        time= 300;
-                        break;
-                    case "10min":
-                        time= 600;
-                        break;
-                    case "20min":
-                        time= 1200;
-                        break;
-
-                    case "3min":
-                        time= 1800;
-                        break;
-                    case "40min":
-                        time= 2400;
-                        break;
-                    case "50min":
-                        time= 3000;
-                        break;
-
-
-                    case "60min":
-                        time= 3600;
-                        break;
-                    case "120min":
-                        time= 7200;
-                        break;
-
-                    default:
-                        time= 300;
-                        break;
+                if(isPlaying){
+                    onTrackPause();
+                    //stop music
+                    mp.stop();
+                    //stop timer..coding writing here
+                    mp.pause();
+                    length=mp.getCurrentPosition();
+                    counter++;
+                    return;
+                }else{
+                    onTrackPlay();
+                    mp.seekTo(length);
+                    mp.start();
+                    if (counter >0 ) {
+                        return;
+                    }
                 }
 
+                tv = findViewById(R.id.timer_text);
+                CreateNotification.createNotification(MusicPlayerActivity.this, tracks.get(0), R.drawable.ic_baseline_pause_24,
+                        0, tracks.size()-1);
+
+
+
                 if(mp != null) {
+                    System.out.println("name_music: "+name_music);
                     playMp3(name_music);
                 }else{
                     System.out.println("mp object null error");
@@ -202,7 +259,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 //A function to set up the timer
                 reverseTimer(time, tv);
                 //Hide the play button
-                play_btn.setVisibility(View.GONE);
+                //play_btn.setVisibility(View.GONE);
 
 
                 //GIF 실행
@@ -215,6 +272,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        mp.pause();
     }
 
 
@@ -289,6 +352,97 @@ public class MusicPlayerActivity extends AppCompatActivity {
         }
     }
 
+
+
+
+    private void popluateTracks(){
+        tracks = new ArrayList<>();
+        tracks.add(new Track("Peaceful Mind", "Feel Relax", R.drawable.c1));
+        tracks.add(new Track("Peaceful Mind", "Release your stress", R.drawable.c1));
+        tracks.add(new Track("Peaceful Mind", "Feel Realx", R.drawable.c1));
+
+
+    }
+
+    private void createChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel(CreateNotification.CHANNEL_ID,"KOD Dev", NotificationManager.IMPORTANCE_LOW);
+
+            notificationManager = getSystemService(NotificationManager.class);
+            if(notificationManager != null){
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+    }
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getExtras().getString("actionname");
+
+            switch (action){
+                case CreateNotification.ACTION_PREVIOUS:
+                    onTrackPrevious();
+                    break;
+                case CreateNotification.ACTION_PLAY:
+                    if (isPlaying){
+                        onTrackPause();
+                    } else {
+                        onTrackPlay();
+                    }
+                    break;
+                case CreateNotification.ACTION_NEXT:
+                    onTrackNext();
+                    break;
+            }
+        }
+    };
+
+    @Override
+    public void onTrackPrevious() {
+        position--;
+        CreateNotification.createNotification(MusicPlayerActivity.this, tracks.get(position),
+                R.drawable.ic_baseline_pause_24, position, tracks.size()-1);
+        //title.setText(tracks.get(position).getTimer());
+    }
+
+    @Override
+    public void onTrackPlay() {
+        CreateNotification.createNotification(MusicPlayerActivity.this, tracks.get(position),
+                R.drawable.ic_baseline_pause_24, position, tracks.size()-1);
+        play_btn.setImageResource(R.drawable.ic_baseline_pause_24);
+        // title.setText(tracks.get(position).getTimer());
+        isPlaying = true;
+    }
+
+    @Override
+    public void onTrackPause() {
+        CreateNotification.createNotification(MusicPlayerActivity.this, tracks.get(position),
+                R.drawable.ic_baseline_play_arrow_24, position, tracks.size()-1);
+        play_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+        // title.setText(tracks.get(position).getTimer());
+        isPlaying = false;
+    }
+
+    @Override
+    public void onTrackNext() {
+        position++;
+        CreateNotification.createNotification(MusicPlayerActivity.this, tracks.get(position),
+                R.drawable.ic_baseline_pause_24, position, tracks.size()-1);
+        //title.setText(tracks.get(position).getTimer());
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            notificationManager.cancelAll();;
+
+        }
+
+        unregisterReceiver(broadcastReceiver);
+    }
 
 
 
