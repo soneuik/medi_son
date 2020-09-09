@@ -1,4 +1,4 @@
-package com.example.medi_son;
+package com.soneuik.medi_son;
 
 import android.content.Context;
 import android.view.LayoutInflater;

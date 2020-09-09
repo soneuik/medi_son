@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.medi_son.logoActivity"
+    tools:context="com.soneuik.medi_son.logoActivity"
     android:orientation="vertical"
    android:background="@color/logo_background"
     >
@@ -14,7 +14,7 @@
         android:id="@+id/logoview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/logo2"
+        android:src="@drawable/logo3"
         >
 
     </ImageView>
