@@ -171,13 +171,6 @@
                     android:text="Relaxation            sleep well" />
 
 
-                <ImageView
-                    android:id="@+id/play_btn"
-                    android:layout_width="43dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="80px"
-                    android:src="@drawable/play" />
             </LinearLayout>
             <TextView
                 android:id="@+id/line"
@@ -214,13 +207,7 @@
                     android:layout_marginLeft="100px"
                     android:text="Sleep Well                  right now" />
 
-                <ImageView
-                    android:id="@+id/play_btn2"
-                    android:layout_width="43dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="80px"
-                    android:src="@drawable/play" />
+
             </LinearLayout>
             <TextView
                 android:id="@+id/line2"
@@ -257,13 +244,7 @@
                     android:textColor="@color/img_btn_background"
                     android:text="Having a good dream   deep sleep" />
 
-                <ImageView
-                    android:id="@+id/play_btn3"
-                    android:layout_width="43dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="80px"
-                    android:src="@drawable/play" />
+
             </LinearLayout>
             <TextView
                 android:id="@+id/line3"
