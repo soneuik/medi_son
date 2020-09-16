@@ -160,6 +160,16 @@ public class test  extends AppCompatActivity implements Playable {
         title.setText(tracks.get(position).getTitle());
 
     }
+    @Override
+    public void onTrackTimer() {
+
+        position++;
+        CreateNotification.createNotification(test.this, tracks.get(position),
+                R.drawable.ic_baseline_pause_24, position, tracks.size()-1);
+        title.setText(tracks.get(position).getTitle());
+
+    }
+
 
     @Override
     protected void onDestroy() {

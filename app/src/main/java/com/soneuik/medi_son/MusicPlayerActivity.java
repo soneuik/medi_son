@@ -71,6 +71,8 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     private  WebView webView;
     private ImageView gif_img;
     private int gif_position ;
+    private  int  length=0;
+    private int play_counter =0;
 
     Intent playbackServiceIntent;
 
@@ -146,23 +148,21 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
+        //인터넷 체크
+        if(!isOnline()){
+
+        }
 
 
+
+        //광고 체크
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-
-
         mAdView = findViewById(R.id.ad_banner);
         adMob_banner();
-
-
-        if(!isOnline()){
-
-        }
-
 
 
         // Creating Notification Player
@@ -175,44 +175,13 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         }
 
 
-
+        //Play song 체크
         Intent intent = getIntent();
         if (intent != null){
             name_music = intent.getStringExtra("name_music");
             current_song = name_music;
             timer_selected = intent.getStringExtra("timer_selected");
-
-            switch(timer_selected) {
-                case "5min":
-                    time= 300;
-                    break;
-                case "10min":
-                    time= 600;
-                    break;
-                case "20min":
-                    time= 1200;
-                    break;
-
-                case "30min":
-                    time= 1800;
-                    break;
-                case "40min":
-                    time= 2400;
-                    break;
-                case "50min":
-                    time= 3000;
-                    break;
-                case "60min":
-                    time= 3600;
-                    break;
-                case "120min":
-                    time= 7200;
-                    break;
-
-                default:
-                    time= 300;
-                    break;
-            }
+            timer_selector(timer_selected);
 
 
             if(gif_selector("bonfire")){
@@ -229,59 +198,26 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
            gif_position = ThreadLocalRandom.current().nextInt(0, selected_arr.length );
         }
 
-
         webView = (WebView) findViewById(R.id.gif_img);
         webView.setVisibility(View.GONE);
         play_btn = findViewById(R.id.play_btn);
         play_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mp.stop();
-                System.out.println("play_btn is clicked");
-                int  length=0;
-                int counter =0;
-
-                if(!isPlaying){
-                    onTrackPause();
-                    //stop music
-                    mp.stop();
-                    //stop timer..coding writing here
-                    mp.pause();
-                    length=mp.getCurrentPosition();
-                    counter++;
-                    return;
-                }else{
-                    onTrackPlay();
-                    mp.seekTo(length);
-                    mp.start();
-                    if (counter >0 ) {
-                        return;
-                    }
-                }
-
+             /*   System.out.println("play_btn is clicked");
+                System.out.println("isPlaying: "+isPlaying);*/
                 tv = findViewById(R.id.timer_text);
+                StopAndResumeMp3();
+
                 CreateNotification.createNotification(MusicPlayerActivity.this, tracks.get(0), R.drawable.ic_baseline_pause_24,
                         0, tracks.size()-1);
-
-
-
-                if(mp != null) {
-                    System.out.println("name_music: "+name_music);
-                    playMp3(name_music);
-                }else{
-                    System.out.println("mp object null error");
-                }
 
                 if(CountDownTimer!=null){
                     CountDownTimer.cancel();
                 }
-
-                //A function to set up the timer
                 reverseTimer(time, tv);
                 //Hide the play button
                 //play_btn.setVisibility(View.GONE);
-
-
                 //GIF 실행
                 String filePath = "";
                 filePath = selected_arr[gif_position];
@@ -292,6 +228,8 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
             }
         });
 
+        //페이지이동시 자동클릭 버튼
+        play_btn.performClick();
     }
 
     @Override
@@ -301,7 +239,28 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     }
 
 
+    private void StopAndResumeMp3(){
+        play_btn.setVisibility(View.GONE);
+        if (!isPlaying){
+            mp.pause();
+            CountDownTimer.cancel();
+            onTrackPause();
+            length=mp.getCurrentPosition();
+            play_counter++;
+            return;
+        } else {
+            onTrackPlay();
+            if(play_counter == 0){
+                System.out.print("1st mp3");
+                playMp3(name_music);
+            }else{
+                System.out.print("resume mp3");
+                mp.start();
+                reverseTimer(time, tv);
+            }
 
+        }
+    }
     private void playMp3 (String nameOfFile){
         // Points to the root reference
         int check = nameOfFile.indexOf("sleep");
@@ -330,6 +289,51 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                 }
             }
         });
+    }
+
+
+    private void stopPlaying() {
+        if (mp != null) {
+            mp.stop();
+            mp.reset();
+            mp.release();
+            mp = null;
+        }
+    }
+
+
+    private void timer_selector(String timer_selected){
+
+        switch(timer_selected) {
+            case "5min":
+                time= 300;
+                break;
+            case "10min":
+                time= 600;
+                break;
+            case "20min":
+                time= 1200;
+                break;
+
+            case "30min":
+                time= 1800;
+                break;
+            case "40min":
+                time= 2400;
+                break;
+            case "50min":
+                time= 3000;
+                break;
+            case "60min":
+                time= 3600;
+                break;
+            case "120min":
+                time= 7200;
+                break;
+            default:
+                time= 300;
+                break;
+        }
     }
 
 
@@ -373,13 +377,17 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     }
 
 
-
-
+    /**
+     *
+     * Notification Player functions
+     *
+     *
+     */
     private void popluateTracks(){
         tracks = new ArrayList<>();
-        tracks.add(new Track("Peaceful Mind", "Feel Relax", R.drawable.c1));
-        tracks.add(new Track("Peaceful Mind", "Release your stress", R.drawable.c1));
-        tracks.add(new Track("Peaceful Mind", "Feel Realx", R.drawable.c1));
+        tracks.add(new Track("Peaceful Mind", "Feel Relax", R.drawable.b12));
+        tracks.add(new Track("Peaceful Mind", "Release your stress", R.drawable.b12));
+        tracks.add(new Track("Peaceful Mind", "Feel Realx", R.drawable.b12));
 
 
     }
@@ -405,15 +413,13 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                     onTrackPrevious();
                     break;
                 case CreateNotification.ACTION_PLAY:
-                    if (isPlaying){
-                        mp.pause();
-                        onTrackPause();
-                    } else {
-                        onTrackPlay();
-                    }
+                    StopAndResumeMp3();
                     break;
                 case CreateNotification.ACTION_NEXT:
                     onTrackNext();
+                    break;
+                case CreateNotification.ACTION_TIMER:
+                    onTrackTimer();
                     break;
             }
         }
@@ -433,7 +439,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                 R.drawable.ic_baseline_pause_24, position, tracks.size()-1);
         play_btn.setImageResource(R.drawable.ic_baseline_pause_24);
         // title.setText(tracks.get(position).getTimer());
-        isPlaying = true;
+        isPlaying = false;
 
     }
 
@@ -443,7 +449,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                 R.drawable.ic_baseline_play_arrow_24, position, tracks.size()-1);
         play_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
         // title.setText(tracks.get(position).getTimer());
-        isPlaying = false;
+        isPlaying = true;
 
     }
 
@@ -454,6 +460,27 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                 R.drawable.ic_baseline_pause_24, position, tracks.size()-1);
         //title.setText(tracks.get(position).getTimer());
     }
+
+    @Override
+    public void onTrackTimer() {
+        PlayerModalActivity pmm;
+        String song = name_music;
+        stopPlaying();
+        pmm = new PlayerModalActivity(MusicPlayerActivity.this, song);
+        pmm.show();
+
+    }
+
+
+
+
+
+    /**
+     *
+     * Notification Player functions
+     *
+     *
+     */
 
 /*
     @Override
@@ -477,78 +504,6 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //////////////////////////////NOT USED but useful///////////////////////////////////////////////////////////
-    private void stopPlaying() {
-        if (mp != null) {
-            mp.stop();
-            mp.reset();
-            mp.release();
-            mp = null;
-        }
-    }
-
-
-
-    private Runnable mUpdateTime = new Runnable() {
-        public void run() {
-            int currentDuration;
-            if (mp.isPlaying()) {
-                currentDuration = mp.getCurrentPosition();
-                updatePlayer(currentDuration);
-                tv.postDelayed(this, 1000);
-            }else {
-                tv.removeCallbacks(this);
-            }
-        }
-    };
-
-
-    private void updatePlayer(int currentDuration){
-        tv.setText("" + milliSecondsToTimer((long) currentDuration));
-    }
-
-    /**
-     * Function to convert milliseconds time to Timer Format
-     * Hours:Minutes:Seconds
-     * */
-    public  String milliSecondsToTimer(long milliseconds) {
-        String finalTimerString = "";
-        String secondsString = "";
-
-        // Convert total duration into time
-        int hours = (int) (milliseconds / (1000 * 60 * 60));
-        int minutes = (int) (milliseconds % (1000 * 60 * 60)) / (1000 * 60);
-        int seconds = (int) ((milliseconds % (1000 * 60 * 60)) % (1000 * 60) / 1000);
-        // Add hours if there
-        if (hours > 0) {
-            finalTimerString = hours + ":";
-        }
-
-        // Prepending 0 to seconds if it is one digit
-        if (seconds < 10) {
-            secondsString = "0" + seconds;
-        } else {
-            secondsString = "" + seconds;
-        }
-
-        finalTimerString = finalTimerString + minutes + ":" + secondsString;
-
-        // return timer string
-        return finalTimerString;
-    }
 
 
 
@@ -602,6 +557,69 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         });
 
     }
+
+
+
+
+
+
+
+    //////////////////////////////NOT USED but useful///////////////////////////////////////////////////////////
+
+
+
+
+
+
+    private Runnable mUpdateTime = new Runnable() {
+        public void run() {
+            int currentDuration;
+            if (mp.isPlaying()) {
+                currentDuration = mp.getCurrentPosition();
+                updatePlayer(currentDuration);
+                tv.postDelayed(this, 1000);
+            }else {
+                tv.removeCallbacks(this);
+            }
+        }
+    };
+
+
+    private void updatePlayer(int currentDuration){
+        tv.setText("" + milliSecondsToTimer((long) currentDuration));
+    }
+
+    /**
+     * Function to convert milliseconds time to Timer Format
+     * Hours:Minutes:Seconds
+     * */
+    public  String milliSecondsToTimer(long milliseconds) {
+        String finalTimerString = "";
+        String secondsString = "";
+
+        // Convert total duration into time
+        int hours = (int) (milliseconds / (1000 * 60 * 60));
+        int minutes = (int) (milliseconds % (1000 * 60 * 60)) / (1000 * 60);
+        int seconds = (int) ((milliseconds % (1000 * 60 * 60)) % (1000 * 60) / 1000);
+        // Add hours if there
+        if (hours > 0) {
+            finalTimerString = hours + ":";
+        }
+
+        // Prepending 0 to seconds if it is one digit
+        if (seconds < 10) {
+            secondsString = "0" + seconds;
+        } else {
+            secondsString = "" + seconds;
+        }
+
+        finalTimerString = finalTimerString + minutes + ":" + secondsString;
+
+        // return timer string
+        return finalTimerString;
+    }
+
+
 
 
 

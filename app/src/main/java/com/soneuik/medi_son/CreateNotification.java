@@ -22,6 +22,8 @@ public class CreateNotification  {
     public static final String ACTION_PREVIOUS = "actionprevious";
     public static final String ACTION_PLAY = "actionplay";
     public static final String ACTION_NEXT = "actionnext";
+    public static final String ACTION_TIMER = "actiontimer";
+
 
     public static Notification notification;
 
@@ -68,17 +70,33 @@ public class CreateNotification  {
             }
 
 
+
+            PendingIntent pendingIntentTimer;
+            int drw_timer;
+            if (pos == size){
+                pendingIntentTimer = null;
+                drw_timer = 0;
+            } else {
+                Intent intentTimer = new Intent(context, NotificationActionsService.class)
+                        .setAction(ACTION_TIMER);
+                pendingIntentTimer = PendingIntent.getBroadcast(context, 0,
+                        intentTimer, PendingIntent.FLAG_UPDATE_CURRENT);
+                drw_timer = R.drawable.ic_timer_black_24dp;
+            }
+
+
             //create notification
             notification = new NotificationCompat.Builder(context, CHANNEL_ID)
                     .setSmallIcon(R.drawable.ic_baseline_music_note_24)
                     .setContentTitle(track.getTitle())
                     .setContentText(track.getArtist())
+
                     .setLargeIcon(icon)
                     .setOnlyAlertOnce(true)//show notification for only first time
                     .setShowWhen(false)
                     .addAction(drw_previous, "Previous", pendingIntentPrevious)
                     .addAction(playbutton, "Play", pendingIntentPlay)
-                    .addAction(drw_next, "Next", pendingIntentNext)
+                    .addAction(drw_timer, "Timer", pendingIntentTimer)
                     .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                             .setShowActionsInCompactView(0, 1, 2)
                             .setMediaSession(mediaSessionCompat.getSessionToken()))
@@ -90,8 +108,6 @@ public class CreateNotification  {
 
         }
     }
-
-
 
 
 
