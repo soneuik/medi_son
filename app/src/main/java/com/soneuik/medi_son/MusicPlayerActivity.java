@@ -15,12 +15,20 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -39,7 +47,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
 
     List<Track> tracks;
     int position = 0;
-    boolean isPlaying = false;
+    boolean isPlaying = true;
     TextView title;
 
 
@@ -52,6 +60,8 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     private String timer_selected= "";
     private String name_music ="";
     private int time = 0;
+    private String current_song ="";
+    private String current_timer ="";
     //FIREBASE
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private StorageReference dateRef;
@@ -64,7 +74,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
 
     Intent playbackServiceIntent;
 
-
+    private AdView mAdView;
     //fire
     private String [] gif_arr_bonfire= {
             "https://media.giphy.com/media/Lf5DUUXwvinHq/giphy.gif",
@@ -118,6 +128,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         super.onBackPressed();
     }
 
+/*
     @Override
     public void onPause ()
     {
@@ -129,11 +140,23 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         super.onPause();
     }
 
+*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+
+        mAdView = findViewById(R.id.ad_banner);
+        adMob_banner();
 
 
         if(!isOnline()){
@@ -154,10 +177,9 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
 
 
         Intent intent = getIntent();
-        String actionname = intent.getStringExtra("actionname");
-        System.out.println("actionname: "+actionname);
         if (intent != null){
             name_music = intent.getStringExtra("name_music");
+            current_song = name_music;
             timer_selected = intent.getStringExtra("timer_selected");
 
             switch(timer_selected) {
@@ -171,7 +193,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                     time= 1200;
                     break;
 
-                case "3min":
+                case "30min":
                     time= 1800;
                     break;
                 case "40min":
@@ -204,7 +226,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
             }else{
                 selected_arr = gif_arr_etc;
             }
-            gif_position = ThreadLocalRandom.current().nextInt(0, selected_arr.length );
+           gif_position = ThreadLocalRandom.current().nextInt(0, selected_arr.length );
         }
 
 
@@ -215,11 +237,11 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
             @Override
             public void onClick(View v) {
                 //mp.stop();
-
+                System.out.println("play_btn is clicked");
                 int  length=0;
                 int counter =0;
 
-                if(isPlaying){
+                if(!isPlaying){
                     onTrackPause();
                     //stop music
                     mp.stop();
@@ -384,6 +406,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                     break;
                 case CreateNotification.ACTION_PLAY:
                     if (isPlaying){
+                        mp.pause();
                         onTrackPause();
                     } else {
                         onTrackPlay();
@@ -411,6 +434,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         play_btn.setImageResource(R.drawable.ic_baseline_pause_24);
         // title.setText(tracks.get(position).getTimer());
         isPlaying = true;
+
     }
 
     @Override
@@ -420,7 +444,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         play_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
         // title.setText(tracks.get(position).getTimer());
         isPlaying = false;
-        mp.stop();
+
     }
 
     @Override
@@ -431,7 +455,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         //title.setText(tracks.get(position).getTimer());
     }
 
-
+/*
     @Override
     protected void onStop() {
         super.onStop();
@@ -441,7 +465,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         }
 
         unregisterReceiver(broadcastReceiver);
-    }
+    }*/
 
 
 
@@ -524,6 +548,59 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
 
         // return timer string
         return finalTimerString;
+    }
+
+
+
+    private void adMob_banner(){
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                // Code to be executed when an ad request fails.
+                Log.d("ADMOB_ERROR_CODE", "admob error code: " + adError);
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
+
     }
 
 

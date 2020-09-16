@@ -11,11 +11,13 @@
 
     <WebView
         android:id="@+id/gif_img"
-        android:layout_width="match_parent"
-        android:layout_height="1000px"
+        android:layout_width="800px"
+        android:layout_height="800px"
         android:layout_gravity="center"
-        >
-    </WebView>
+        android:layout_marginLeft="150px"
+        android:layout_marginTop="200px"
+        ></WebView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="700px"
@@ -52,7 +54,26 @@
             >
 
         </ImageButton>
+
+
     </RelativeLayout>
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6769539245756212/5054136158"
+        android:layout_above="@+id/nav_view"
+        android:layout_marginBottom="150px"
+        >
+    </com.google.android.gms.ads.AdView>
+
+
 
 
 </RelativeLayout>
