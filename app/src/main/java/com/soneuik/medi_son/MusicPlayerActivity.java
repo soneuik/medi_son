@@ -52,8 +52,6 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     private String timer_selected= "";
     private String name_music ="";
     private int time = 0;
-    private String current_song ="";
-    private String current_timer ="";
     //FIREBASE
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private StorageReference dateRef;
@@ -206,7 +204,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
             }else{
                 selected_arr = gif_arr_etc;
             }
-           gif_position = ThreadLocalRandom.current().nextInt(0, selected_arr.length );
+            gif_position = ThreadLocalRandom.current().nextInt(0, selected_arr.length );
         }
 
 
@@ -422,6 +420,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         play_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
         // title.setText(tracks.get(position).getTimer());
         isPlaying = false;
+        mp.stop();
     }
 
     @Override

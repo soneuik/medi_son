@@ -5,6 +5,7 @@
     android:background="@drawable/s1"
     android:orientation="vertical"
     android:layout_gravity="center"
+
     >
 
 
@@ -35,7 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        >
 
         <Button
             android:id="@+id/min5"
@@ -60,6 +62,19 @@
             android:textColor="#5DBCD2"
             android:textStyle="bold" />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        >
+
+
+
         <Button
             android:id="@+id/min20"
             android:layout_width="100dp"
@@ -69,18 +84,8 @@
             android:clickable="true"
             android:text="20min"
             android:textColor="#5DBCD2"
-            android:layout_marginRight="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal" >
-
+            android:textStyle="bold"
+            />
         <Button
             android:id="@+id/min30"
             android:layout_width="100dp"
@@ -92,6 +97,18 @@
             android:textColor="#5DBCD2"
             android:radius="10dp"
             android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        >
+
+
 
         <Button
             android:id="@+id/min40"
@@ -113,7 +130,6 @@
             android:clickable="true"
             android:text="50min"
             android:textColor="#5DBCD2"
-            android:layout_marginRight="20dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -122,7 +138,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        >
 
         <Button
             android:id="@+id/min60"

@@ -2,9 +2,14 @@ package com.soneuik.medi_son;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 public class PlayerModalActivity extends Dialog implements android.view.View.OnClickListener {
@@ -15,7 +20,6 @@ public class PlayerModalActivity extends Dialog implements android.view.View.OnC
     public Button min30, min40, min50;
     public Button min60, min120;
     private String name_music ="";
-
     public PlayerModalActivity(Activity a){
         super(a);
 
@@ -26,6 +30,10 @@ public class PlayerModalActivity extends Dialog implements android.view.View.OnC
         // TODO Auto-generated constructor stub
         this.current_activity = a;
         name_music= song;
+
+
+
+
     }
 
 
@@ -34,6 +42,20 @@ public class PlayerModalActivity extends Dialog implements android.view.View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_modal);
+
+
+        Configuration configuration = this.current_activity.getResources().getConfiguration();
+        configuration.fontScale = (float) 0.85; //0.85 small size, 1 normal size, 1,15 big etc
+        DisplayMetrics metrics = new DisplayMetrics();
+        this.current_activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        configuration.densityDpi = (int) this.current_activity.getResources().getDisplayMetrics().xdpi;
+        this.current_activity.getBaseContext().getResources().updateConfiguration(configuration, metrics);
+
+
+
+
+
 
         min5 = (Button) findViewById(R.id.min5);
         min10 = (Button) findViewById(R.id.min10);
@@ -166,6 +188,8 @@ public class PlayerModalActivity extends Dialog implements android.view.View.OnC
         }
         dismiss();
     }
+
+
 
 
 }
