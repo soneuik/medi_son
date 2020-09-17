@@ -77,11 +77,13 @@ public class CreateNotification  {
                 pendingIntentTimer = null;
                 drw_timer = 0;
             } else {
-                Intent intentTimer = new Intent(context, NotificationActionsService.class)
+                Intent intentTimer = new Intent(context, HomeActivity.class)
                         .setAction(ACTION_TIMER);
-                pendingIntentTimer = PendingIntent.getBroadcast(context, 0,
-                        intentTimer, PendingIntent.FLAG_UPDATE_CURRENT);
                 drw_timer = R.drawable.ic_timer_black_24dp;
+
+                intentTimer.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                pendingIntentTimer = PendingIntent.getActivity(context, 0,
+                        intentTimer, 0);
             }
 
 

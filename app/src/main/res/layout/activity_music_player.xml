@@ -11,11 +11,9 @@
 
     <WebView
         android:id="@+id/gif_img"
-        android:layout_width="800px"
-        android:layout_height="800px"
+        android:layout_width="match_parent"
+        android:layout_height="1300px"
         android:layout_gravity="center"
-        android:layout_marginLeft="150px"
-        android:layout_marginTop="200px"
         ></WebView>
 
     <RelativeLayout

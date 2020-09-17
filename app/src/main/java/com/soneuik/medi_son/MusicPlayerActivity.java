@@ -169,6 +169,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         popluateTracks();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             createChannel();
+
             registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACKS"));
             startService(new Intent(getBaseContext(), OnClearFromRecentService.class));
 
@@ -204,9 +205,17 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         play_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             /*   System.out.println("play_btn is clicked");
-                System.out.println("isPlaying: "+isPlaying);*/
+                System.out.println("play_btn is clicked");
+                System.out.println("isPlaying: "+isPlaying);
+
+
                 tv = findViewById(R.id.timer_text);
+
+                    System.out.println("stop is clicked");
+                    mp.stop();
+
+
+
                 StopAndResumeMp3();
 
                 CreateNotification.createNotification(MusicPlayerActivity.this, tracks.get(0), R.drawable.ic_baseline_pause_24,
@@ -255,6 +264,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                 playMp3(name_music);
             }else{
                 System.out.print("resume mp3");
+                mp.pause();
                 mp.start();
                 reverseTimer(time, tv);
             }
@@ -385,9 +395,9 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
      */
     private void popluateTracks(){
         tracks = new ArrayList<>();
-        tracks.add(new Track("Peaceful Mind", "Feel Relax", R.drawable.b12));
-        tracks.add(new Track("Peaceful Mind", "Release your stress", R.drawable.b12));
-        tracks.add(new Track("Peaceful Mind", "Feel Realx", R.drawable.b12));
+        tracks.add(new Track("Peaceful Mind", "Feel Relax", R.drawable.s2));
+        tracks.add(new Track("Peaceful Mind", "Release your stress", R.drawable.s2));
+        tracks.add(new Track("Peaceful Mind", "Feel Realx", R.drawable.s2));
 
 
     }
@@ -419,6 +429,8 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
                     onTrackNext();
                     break;
                 case CreateNotification.ACTION_TIMER:
+                    mp.pause();
+                    System.out.println("timer clicked");
                     onTrackTimer();
                     break;
             }
@@ -465,10 +477,17 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     public void onTrackTimer() {
         PlayerModalActivity pmm;
         String song = name_music;
-        stopPlaying();
-        pmm = new PlayerModalActivity(MusicPlayerActivity.this, song);
-        pmm.show();
+        mp.pause();
+       /* pmm = new PlayerModalActivity(MusicPlayerActivity.this, song);
+        pmm.show();*/
 
+    }
+    public static Intent newLauncherIntent(final Context context) {
+        final Intent intent = new Intent(context, PlayerModalActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        return intent;
     }
 
 

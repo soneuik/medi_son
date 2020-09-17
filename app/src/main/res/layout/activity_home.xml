@@ -67,7 +67,8 @@
                         android:layout_height="300px"
                         android:layout_marginLeft="50px"
                         android:layout_marginTop="50px"
-                        android:adjustViewBounds="true" />
+                        android:adjustViewBounds="true"
+                        />
 
 
 
