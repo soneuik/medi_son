@@ -44,7 +44,6 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
     ImageButton btn_rain1, btn_rain2,btn_rain3,btn_rain4;
     ImageButton btn_thunder1, btn_thunder2,btn_thunder3 ;
     ImageButton btn_img ;
-    private MediaPlayer mp;
     //Firebase
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private StorageReference dateRef;
@@ -182,7 +181,7 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
                     break;
 
             }
-            image_loader(img_arr[i], btn_img);
+            //image_loader(img_arr[i], btn_img);
         }
 
 

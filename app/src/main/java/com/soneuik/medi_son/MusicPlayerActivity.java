@@ -120,14 +120,13 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     };
 
 
-
-
     @Override
     public void onBackPressed ()
     {
         if (mp != null)
             mp.stop();
         super.onBackPressed();
+        notificationManager.cancelAll();;
     }
 
 /*
@@ -501,8 +500,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
      *
      */
 
-/*
-    @Override
+  /*  @Override
     protected void onStop() {
         super.onStop();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -510,7 +508,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
 
         }
 
-        unregisterReceiver(broadcastReceiver);
+        //unregisterReceiver(broadcastReceiver);
     }*/
 
 
@@ -576,71 +574,6 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
         });
 
     }
-
-
-
-
-
-
-
-    //////////////////////////////NOT USED but useful///////////////////////////////////////////////////////////
-
-
-
-
-
-
-    private Runnable mUpdateTime = new Runnable() {
-        public void run() {
-            int currentDuration;
-            if (mp.isPlaying()) {
-                currentDuration = mp.getCurrentPosition();
-                updatePlayer(currentDuration);
-                tv.postDelayed(this, 1000);
-            }else {
-                tv.removeCallbacks(this);
-            }
-        }
-    };
-
-
-    private void updatePlayer(int currentDuration){
-        tv.setText("" + milliSecondsToTimer((long) currentDuration));
-    }
-
-    /**
-     * Function to convert milliseconds time to Timer Format
-     * Hours:Minutes:Seconds
-     * */
-    public  String milliSecondsToTimer(long milliseconds) {
-        String finalTimerString = "";
-        String secondsString = "";
-
-        // Convert total duration into time
-        int hours = (int) (milliseconds / (1000 * 60 * 60));
-        int minutes = (int) (milliseconds % (1000 * 60 * 60)) / (1000 * 60);
-        int seconds = (int) ((milliseconds % (1000 * 60 * 60)) % (1000 * 60) / 1000);
-        // Add hours if there
-        if (hours > 0) {
-            finalTimerString = hours + ":";
-        }
-
-        // Prepending 0 to seconds if it is one digit
-        if (seconds < 10) {
-            secondsString = "0" + seconds;
-        } else {
-            secondsString = "" + seconds;
-        }
-
-        finalTimerString = finalTimerString + minutes + ":" + secondsString;
-
-        // return timer string
-        return finalTimerString;
-    }
-
-
-
-
 
 
 
