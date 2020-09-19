@@ -105,10 +105,10 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
         btn_sleep12.setOnClickListener(this);
         btn_sleep13 = (ImageButton) findViewById(R.id.btn_sleep13);
         btn_sleep13.setOnClickListener(this);
+        adMob_banner();
 
 
-
-        //image loader
+     /*   //image loader
         for(int i=0; i<img_arr.length; i++) {
             String btn_name = "btn_" + img_arr[i];
             switch (btn_name) {
@@ -129,12 +129,12 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
                     break;
 
             }
-            image_loader(img_arr[i], btn_img);
+            //image_loader(img_arr[i], btn_img);
 
-        }
+        }*/
 
 
-        //image loader
+       /* //image loader
         for(int i=0; i<img_arr2.length; i++) {
             String btn_name = "btn_" + img_arr2[i];
             switch (btn_name) {
@@ -168,8 +168,9 @@ public class SleepActivity extends AppCompatActivity implements View.OnClickList
 
 
 
-            adMob_banner();
-        }
+
+        }*/
+
 
 
 

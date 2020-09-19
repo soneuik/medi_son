@@ -55,9 +55,11 @@
                         android:id="@+id/btn_sleep1"
                         android:layout_width="400px"
                         android:layout_height="550px"
-                        android:layout_marginLeft="33sp"
+                        android:layout_marginLeft="20sp"
                         android:layout_marginTop="50px"
-                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/sleep1"
                          />
 
 
@@ -101,7 +103,9 @@
                         android:layout_height="550px"
                         android:layout_marginLeft="20sp"
                         android:layout_marginTop="50px"
-                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/sleep2"
                          />
 
 
@@ -110,16 +114,16 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-50dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="20dp"
                         android:gravity="center"
-                        android:text="  Deep sleep"
+                        android:text="Deep sleep"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/text_sleep2_2"
                         android:layout_width="120dp"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_below ="@+id/c2_text"
                         android:layout_height="wrap_content"
                         android:textSize="30px"
@@ -158,6 +162,9 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="50px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep3"
                    />
 
                 <TextView
@@ -195,6 +202,9 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="50px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep4"
                       />
 
                 <TextView
@@ -232,6 +242,9 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="50px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep5"
                       />
 
                 <TextView
@@ -284,6 +297,9 @@
                     android:layout_width="200px"
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep6"
                       />
 
                 <ImageButton
@@ -291,6 +307,9 @@
                     android:layout_width="200px"
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep7"
                      />
 
                 <ImageButton
@@ -298,6 +317,9 @@
                     android:layout_width="200px"
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep8"
                       />
 
 
@@ -306,6 +328,9 @@
                     android:layout_width="200px"
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep9"
                      />
 
 
@@ -315,6 +340,9 @@
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
                     android:layout_marginTop="25px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep10"
                       />
 
                 <ImageButton
@@ -323,6 +351,9 @@
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
                     android:layout_marginTop="25px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/s3"
                      />
 
                 <ImageButton
@@ -331,6 +362,9 @@
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
                     android:layout_marginTop="25px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep12"
                       />
 
                 <ImageButton
@@ -339,6 +373,9 @@
                     android:layout_height="200px"
                     android:layout_marginLeft="50px"
                     android:layout_marginTop="25px"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sleep13"
                       />
             </GridLayout>
         </LinearLayout>

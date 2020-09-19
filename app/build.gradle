@@ -16,8 +16,8 @@ android {
         applicationId "com.soneuik.medi_son"
         minSdkVersion 22
         targetSdkVersion 29
-        versionCode 7
-        versionName "1.3.8"
+        versionCode 8
+        versionName "1.4.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
