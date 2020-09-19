@@ -387,12 +387,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements Playable {
     }
 
 
-    /**
-     *
-     * Notification Player functions
-     *
-     *
-     */
+    /* Notification Player functions */
     private void popluateTracks(){
         tracks = new ArrayList<>();
         tracks.add(new Track("Peaceful Mind", "Feel Relax", R.drawable.s2));

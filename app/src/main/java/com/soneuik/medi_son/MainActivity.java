@@ -223,8 +223,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void btn_email(){
         String mailto = "mailto:soneuik30@gmail.com" +
                 "?cc=" +
-                "&subject=" + Uri.encode("your subject") +
-                "&body=" + Uri.encode("your mail body");
+                "&subject=" + Uri.encode("You Opinion!") +
+                "&body=" + Uri.encode("Give us your opinion to improve our app!");
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse(mailto));
 
